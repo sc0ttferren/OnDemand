@@ -1,4 +1,4 @@
-/* styles.css */
+/* 1styles.css */
 body {
     margin: 0;
     padding: 0;
@@ -7,6 +7,7 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: #000;
+    font-family: 'Hacker Font', sans-serif;
 }
 
 .movie-screen {
