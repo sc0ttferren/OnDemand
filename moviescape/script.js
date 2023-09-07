@@ -2,7 +2,8 @@
 const movies = [
     { title: 'The Super Mario Bros', genre: 'Adventure', image: 'movie1.jpg', link: 'movies/the-super-mario-bros' },
     { title: 'Monsters University', genre: 'Comedy', image: 'movie2.jpg', link: 'movies/monsters-university' },
-    { title: 'Spiderman: Across The SpiderVerse', genre: 'Acion', image: 'movie3.jpg', link: 'movies/spiderman-across-the-spiderverse' },
+    { title: 'Spiderman: Across The SpiderVerse', genre: 'Action', image: 'movie3.jpg', link: 'movies/spiderman-across-the-spiderverse' },
+    { title: 'Blue Beetle', genre: 'Action', image: 'movie3.jpg', link: 'movies/blue-beetle' },
 ];
 
 const movieList = document.getElementById('movie-list');
