@@ -1,6 +1,6 @@
 // script.js
 const movies = [
-    { title: 'The Super Mario Bros', genre: 'Adventure', image: 'movie1.jpg', link: '/movies/the-super-mario-bros' },
+    { title: 'The Super Mario Bros', genre: 'Adventure', image: 'movie1.jpg', link: 'movies/the-super-mario-bros' },
     { title: 'Movie 2', genre: 'Action', image: 'movie2.jpg', link: 'movie2.html' },
     { title: 'Movie 3', genre: 'Comedy', image: 'movie3.jpg', link: 'movie3.html' },
 ];
