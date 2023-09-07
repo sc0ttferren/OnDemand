@@ -3,12 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Screen</title>
-    <link rel="stylesheet" href="styles.css"> <!-- linking to css -->
+    <title>Custom Video Player</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000;
+        }
+
+        .custom-video-player {
+            position: relative;
+            width: 80%; /* Adjust the width as needed */
+            padding-top: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100%) */
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Your custom CSS styles for the controls */
+        /* Add your styles here */
+    </style>
 </head>
 <body>
-    <div class="movie-screen">
-        <iframe src="https://www.example.com/your-movie.mp4" frameborder="0" allowfullscreen></iframe>
+    <div class="custom-video-player">
+        <video id="video" controls>
+            <source src="your-video.mp4" type="video/mp4">
+            <!-- Add additional video source formats here for better compatibility -->
+        </video>
+        <div class="controls">
+            <button id="play-pause">Play</button>
+            <input id="seek-bar" type="range" min="0" value="0">
+            <button id="mute">Mute</button>
+            <input id="volume-bar" type="range" min="0" max="1" step="0.1" value="1">
+            <span id="current-time">0:00</span> / <span id="duration">0:00</span>
     </div>
+
+    <script>
+ const video = document.getElementById('video');
+        const playPauseButton = document.getElementById('play-pause');
+        const seekBar = document.getElementById('seek-bar');
+        const muteButton = document.getElementById('mute');
+        const volumeBar = document.getElementById('volume-bar');
+        const currentTime = document.getElementById('current-time');
+        const duration = document.getElementById('duration');
+
+        // Play/Pause button
+        playPauseButton.addEventListener('click', () => {
+            if (video.paused || video.ended) {
+                video.play();
+                playPauseButton.textContent = 'Pause';
+            } else {
+                video.pause();
+                playPauseButton.textContent = 'Play';
+            }
+        });
+
+        // Update seek bar as the video plays
+        video.addEventListener('timeupdate', () => {
+            const currentTimeValue = video.currentTime;
+            const durationValue = video.duration;
+
+            seekBar.value = (currentTimeValue / durationValue) * 100;
+            currentTime.textContent = formatTime(currentTimeValue);
+            duration.textContent = formatTime(durationValue);
+        });
+
+        // Seek bar
+        seekBar.addEventListener('input', () => {
+            const seekTo = (seekBar.value / 100) * video.duration;
+            video.currentTime = seekTo;
+        });
+
+        // Mute button
+        muteButton.addEventListener('click', () => {
+            if (video.muted) {
+                video.muted = false;
+                muteButton.textContent = 'Mute';
+            } else {
+                video.muted = true;
+                muteButton.textContent = 'Unmute';
+            }
+        });
+
+        // Volume bar
+        volumeBar.addEventListener('input', () => {
+            video.volume = volumeBar.value;
+        });
+
+        // Format time in HH:MM format
+        function formatTime(time) {
+            const minutes = Math.floor(time / 60);
+            const seconds = Math.floor(time % 60);
+            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }    
+    
+</script>
 </body>
 </html>
