@@ -1,8 +1,8 @@
 // script.js
 const movies = [
     { title: 'The Super Mario Bros', genre: 'Adventure', image: 'movie1.jpg', link: 'movies/the-super-mario-bros' },
-    { title: 'Movie 2', genre: 'Action', image: 'movie2.jpg', link: 'movie2.html' },
-    { title: 'Movie 3', genre: 'Comedy', image: 'movie3.jpg', link: 'movie3.html' },
+    { title: 'Monsters University', genre: 'Comedy', image: 'movie2.jpg', link: 'movies/monsters-university' },
+    { title: 'Spiderman: Across The SpiderVerse', genre: 'Acion', image: 'movie3.jpg', link: 'movies/spiderman-across-the-spider-verse' },
 ];
 
 const movieList = document.getElementById('movie-list');
