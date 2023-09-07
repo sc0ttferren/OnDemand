@@ -4,6 +4,7 @@ const movies = [
     { title: 'Monsters University', genre: 'Comedy', image: 'movie2.jpg', link: 'movies/monsters-university' },
     { title: 'Spiderman: Across The SpiderVerse', genre: 'Action', image: 'movie3.jpg', link: 'movies/spiderman-across-the-spiderverse' },
     { title: 'Blue Beetle', genre: 'Action', image: 'movie3.jpg', link: 'movies/blue-beetle' },
+    { title: 'Cars', genre: 'Action', image: 'movie3.jpg', link: 'movies/cars' },
 ];
 
 const movieList = document.getElementById('movie-list');
