@@ -4,19 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Super Mario Bros</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="video-container">
         <iframe src="https://drive.google.com/file/d/1VpbsbklmMLfN1PeutTj0hxWqwEU9j_ri/preview" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
     </div>
-    <button id="back-button">Back</button>
+    <!-- <button id="back-button">Back</button> -->
     <script>
-        const backButton = document.getElementById('back-button');
+        // const backButton = document.getElementById('back-button');
 
-        backButton.addEventListener('click', () => {
-            window.location.href = 'https://scottstheatres.vercel.app/moviescape/';
-        });
+        // backButton.addEventListener('click', () => {
+        //     window.location.href = 'https://scottstheatres.vercel.app/moviescape/';
+        // });
     </script>
 </body>
 </html>
