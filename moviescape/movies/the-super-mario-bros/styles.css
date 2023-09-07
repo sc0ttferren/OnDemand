@@ -7,7 +7,7 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: #000;
-    font-family: 'Hacker Font', sans-serif;
+    font-family: 'Rancho', sans-serif; /* if want to know why sans-serif exists, its a fallback font incase the real one breaks */
 }
 
 .movie-screen {
