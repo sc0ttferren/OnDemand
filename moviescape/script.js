@@ -23,7 +23,7 @@ if (!userpermKey) {
 
     const expires = new Date();
     expires.setFullYear(expires.getFullYear() + 50); // Set expiration to 50 years from now
-    const cookie = `userpermKey=${result};expires=${expires.toUTCString()};path=/;domain=scottstheatres.vercel.app`;
+    const cookie = `userpermKey=${result};expires=${expires.toUTCString()};path=/;domain=www.scottstheatres.vercel.app/moviescape/`;
     document.cookie = cookie;
 }
 
