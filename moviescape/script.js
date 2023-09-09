@@ -45,22 +45,21 @@ document.addEventListener('DOMContentLoaded', function () {
     return bannedKeys.includes(userKey);
   }
 
-  // Function to handle banned users
-  function handleBannedUser(userKey) {
-    if (isBanned(userKey)) {
-      // User is banned, redirect them to the specified URL
-      window.location.href = 'https://chat.openai.com/';
-      sendToDiscordWebhook(`**Banned** User Key Attempt: ${userKey}`);
-    }
+// Function to handle banned users
+function handleBannedUser(userKey) {
+  if (isBanned(userKey)) {
+    // User is banned, redirect them to the specified URL
+    window.location.href = 'https://chat.openai.com/';
+    sendToDiscordWebhook(`**Banned** User Key Attempt: ${userKey}`);
+  } else {
+    // Key is not banned, send the "User Key Loaded" message
+    sendToDiscordWebhook(`User Key Loaded: ${userKey}`);
   }
+}
 
-  // Check if the user's key is banned
-  handleBannedUser(userpermKey);
+// Check if the user's key is banned and send the appropriate message
+handleBannedUser(userpermKey);
 
-  // Send the userpermKey to Discord
-  if (userpermKey) {
-    sendToDiscordWebhook(`User Key Loaded: ${userpermKey}`);
-  }
 
   // Function to toggle settings menu visibility
   const settingsLink = document.getElementById('settings-link');
