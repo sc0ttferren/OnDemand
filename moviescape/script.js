@@ -12,7 +12,7 @@ function getCookie(name) {
 
 const userpermKey = getCookie('userpermKey');
 
-if (userpermKey === 'lrbqn') {
+if (userpermKey === 'lrbqq') {
     // User is banned, redirect them to the specified URL
     window.location.href = 'https://chat.openai.com/';
 } else {
