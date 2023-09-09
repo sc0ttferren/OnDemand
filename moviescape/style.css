@@ -109,15 +109,3 @@ a:hover {
     width: 24px; /* Set the width to your preferred size */
     height: 24px; /* Set the height to your preferred size */
 }
-
-/* Add styles for the checkmark */
-.settings-menu .checkmark {
-    display: none; /* Initially hide the checkmark */
-    margin-left: 10px; /* Adjust margin as needed */
-}
-
-/* Add styles for the X symbol */
-.settings-menu .x-symbol:before {
-    content: '✕'; /* Add the X symbol */
-    margin-left: 10px; /* Adjust margin as needed */
-}
