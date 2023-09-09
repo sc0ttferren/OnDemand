@@ -1,3 +1,4 @@
+Copy code
 // Function to generate a random 5-character string
 function generateRandomValue() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -12,7 +13,7 @@ function generateRandomValue() {
 // Function to set a cookie with the generated value
 function setCookie(name, value, days) {
     const expires = new Date();
-    expires.setFullYear(expires.getFullYear() + 50); // Set expiration to 50 years from now
+    expires.setDate(expires.getDate() + days); // Set expiration to the specified number of days from now
     const cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;domain=.scottstheatres.vercel.app/moviescape/`;
     document.cookie = cookie;
 }
