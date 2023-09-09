@@ -17,21 +17,26 @@ function setCookie(name, value, days) {
     document.cookie = cookie;
 }
 
-// Generate a random value and set it as a cookie
-const userpermKey = generateRandomValue();
-setCookie('userpermKey', userpermKey, 18250); // 18250 days (50 years) expiration
-
 // Function to check if a cookie with the given name exists
 function getCookie(name) {
-  const cookies = document.cookie.split(';');
-  for (const cookie of cookies) {
-    const [cookieName, cookieValue] = cookie.trim().split('=');
-    if (cookieName === name) {
-      return cookieValue;
+    const cookies = document.cookie.split(';');
+    for (const cookie of cookies) {
+        const [cookieName, cookieValue] = cookie.trim().split('=');
+        if (cookieName === name) {
+            return cookieValue;
+        }
     }
-  }
-  return null;
+    return null;
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    let userpermKey = getCookie('userpermKey');
+
+    if (!userpermKey) {
+        // Cookie doesn't exist, generate a random value and set it as a cookie
+        userpermKey = generateRandomValue();
+        setCookie('userpermKey', userpermKey, 18250); // 18250 days (50 years) expiration
+    }
 
 document.addEventListener('DOMContentLoaded', function () {
   const userpermKey = getCookie('userpermKey');
