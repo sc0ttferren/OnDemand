@@ -36,7 +36,7 @@ function sendToDiscordWebhook(message) {
         });
 }
 
-if (userpermKey === 'lrbqq') {
+if (userpermKey === 'G0AAL') {
   window.location.href = 'https://chat.openai.com/';     // User is banned, redirect them to the specified URL
     sendToDiscordWebhook(`**Banned** User Key Attempt: ${userpermKey}`); // Also send a message lol
 } else {
