@@ -89,10 +89,10 @@ function toggleTabCloak() {
 
     if (tabCloakOption.classList.contains('checked')) {
         tabCloakOption.classList.remove('checked');
-        favicon.href = 'favicon-original.png'; // Change to your original favicon
+        favicon.href = 'https://github-production-user-asset-6210df.s3.amazonaws.com/100329425/265307460-71bee8b1-cbb4-4da7-9378-21730d6f6fc6.png'; // Change to your original favicon
     } else {
         tabCloakOption.classList.add('checked');
-        favicon.href = 'favicon-tabcloak.png'; // Change to your tab cloak favicon
+        favicon.href = 'favicon.ico'; // Change to your tab cloak favicon
     }
 }
 
