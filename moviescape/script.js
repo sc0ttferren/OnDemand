@@ -5,7 +5,7 @@ const movies = [
     { title: 'Spiderman: Across The SpiderVerse', genre: 'Action', image: 'movie3.jpg', link: 'movies/spiderman-across-the-spiderverse' },
     { title: 'Blue Beetle', genre: 'Action', image: 'movie3.jpg', link: 'movies/blue-beetle' },
     { title: 'Cars', genre: 'Action', image: 'movie3.jpg', link: 'movies/cars' },
-    // add any amount and it'll still work lol
+    // Add more movies as needed
 ];
 
 const movieList = document.getElementById('movie-list');
@@ -21,7 +21,7 @@ function generateRandomValue() {
     return result;
 }
 
-// make it set a cookie w/ the generated value
+// Function to set a cookie with the generated value
 function setCookie(name, value, days) {
     const expires = new Date();
     expires.setFullYear(expires.getFullYear() + 50); // Set expiration to 50 years from now
@@ -29,14 +29,14 @@ function setCookie(name, value, days) {
     document.cookie = cookie;
 }
 
-// generate a random value and set it as a cookie (if not already set)
+// Generate a random value and set it as a cookie (if not already set)
 const userpermKey = getCookie('userpermKey') || generateRandomValue();
 setCookie('userpermKey', userpermKey, 18250); // 18250 days (50 years) expiration
 
-// check and calculate the number of rows and maximum movies per row
+// Calculate the number of rows and maximum movies per row
 const numRows = Math.min(Math.ceil(movies.length / 5), 15);
 
-// create rows of movies if there is 5 in one row
+// Create rows of movies
 for (let row = 0; row < numRows; row++) {
     const movieRow = document.createElement('div');
     movieRow.classList.add('movie-row');
