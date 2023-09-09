@@ -58,10 +58,6 @@ a:hover {
     color: #51545c;
 }
 
-/* styles.css */
-
-/* ... Previous CSS Rules ... */
-
 /* New Settings Menu Styling */
 .settings-menu {
     position: fixed;
@@ -74,6 +70,13 @@ a:hover {
     max-width: 400px; /* Adjust the width as needed */
     width: 80%; /* Adjust the width as needed */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a shadow for depth */
+}
+
+.settings-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
 }
 
 .settings-menu ul {
