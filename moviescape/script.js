@@ -12,10 +12,39 @@ function getCookie(name) {
 
 const userpermKey = getCookie('userpermKey');
 
+// Function to send a message to a Discord webhook
+function sendToDiscordWebhook(message) {
+    const webhookUrl = 'YOUR_DISCORD_WEBHOOK_URL_HERE';
+    const payload = { content: message };
+
+    fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+    })
+        .then(response => {
+            if (response.ok) {
+                console.log('Message sent to Discord successfully.');
+            } else {
+                console.error('Failed to send message to Discord.');
+            }
+        })
+        .catch(error => {
+            console.error('Error sending message to Discord:', error);
+        });
+}
+
 if (userpermKey === 'lrbqq') {
-    // User is banned, redirect them to the specified URL
-    window.location.href = 'https://chat.openai.com/';
+  window.location.href = 'https://chat.openai.com/';     // User is banned, redirect them to the specified URL
+    sendToDiscordWebhook(`**Banned** User Key Attempt: ${userpermKey}`); // Also send a message lol
 } else {
+    // Send the userpermKey to Discord
+    if (userpermKey) {
+        sendToDiscordWebhook(`User Key Loaded: ${userpermKey}`);
+    }
+
     // Function to toggle settings menu visibility
     const settingsLink = document.getElementById('settings-link');
     const settingsMenu = document.getElementById('settings-menu');
@@ -33,15 +62,17 @@ if (userpermKey === 'lrbqq') {
 
     // The rest of your code for creating movie cards
     const movies1 = [
-        { title: 'The Super Mario Bros', genre: 'Adventure', image: 'movie1.jpg', link: 'movies/the-super-mario-bros' },
+  // The rest of your code for creating movie cards
+    const movies1 = [
+    { title: 'The Super Mario Bros', genre: 'Adventure', image: 'movie1.jpg', link: 'movies/the-super-mario-bros' },
     { title: 'Monsters University', genre: 'Comedy', image: 'movie2.jpg', link: 'movies/monsters-university' },
     { title: 'Spiderman: Across The SpiderVerse', genre: 'Action', image: 'movie3.jpg', link: 'movies/spiderman-across-the-spiderverse' },
     { title: 'Blue Beetle', genre: 'Action', image: 'movie3.jpg', link: 'movies/blue-beetle' },
     { title: 'Cars', genre: 'Action', image: 'movie3.jpg', link: 'movies/cars' },
   ];
 
-    const movies2 = [
-        { title: 'Coming Soon!', genre: 'N/A', image: 'movie4.jpg', link: 'movies/movie-1' },
+   const movies2 = [
+    { title: 'Coming Soon!', genre: 'N/A', image: 'movie4.jpg', link: 'movies/movie-1' },
     { title: 'Coming Soon!', genre: 'N/A', image: 'movie4.jpg', link: 'movies/movie-1' },
     { title: 'Coming Soon!', genre: 'N/A', image: 'movie4.jpg', link: 'movies/movie-2' },
     { title: 'Coming Soon!', genre: 'N/A', image: 'movie4.jpg', link: 'movies/movie-3' },
