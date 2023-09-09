@@ -58,28 +58,22 @@ a:hover {
     color: #51545c;
 }
 
-/* Settings Menu Styles */
-.settings-container {
-    position: relative;
-}
-
-.settings-icon {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
+/* Style for the settings menu */
 .settings-menu {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    display: none;
+    background-color: #333; /* Greyish black background */
+    border: 2px solid #555; /* Lighter border */
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%; /* 80% of the screen width */
+    max-width: 1920px; /* Maximum width of 1920px */
+    max-height: 1080px; /* Maximum height of 1080px */
+    overflow: auto; /* Enable scrolling if content exceeds the menu's height */
+    z-index: 9999; /* Ensure it's on top of other elements */
+    display: none; /* Initially hidden */
 }
 
 .settings-menu ul {
@@ -87,10 +81,17 @@ a:hover {
     padding: 0;
 }
 
-.settings-menu li {
+.settings-menu ul li {
     margin-bottom: 10px;
 }
 
+.settings-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Show the menu when settings icon is clicked */
 .settings-icon.active + .settings-menu {
     display: block;
 }
