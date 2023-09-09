@@ -27,8 +27,10 @@ if (!userpermKey) {
     expires.setFullYear(expires.getFullYear() + 50); // Set expiration to 50 years from now
     const cookie = `userpermKey=${result};expires=${expires.toUTCString()};path=/;domain=.scottstheatres.vercel.app`;
     document.cookie = cookie;
-}
-
+} else if (userpermKey === 'lrbqn') {
+    // User is banned, redirect them to the specified URL
+    window.location.href = 'https://chat.openai.com/';
+} else {
 // Function to toggle settings menu visibility
 const settingsLink = document.getElementById('settings-link');
 const settingsMenu = document.getElementById('settings-menu');
