@@ -30,7 +30,7 @@ if (!userpermKey) {
 }
 
 // The rest of your code for creating movie cards
-const movies = [
+const movies1 = [
     { title: 'The Super Mario Bros', genre: 'Adventure', image: 'movie1.jpg', link: 'movies/the-super-mario-bros' },
     { title: 'Monsters University', genre: 'Comedy', image: 'movie2.jpg', link: 'movies/monsters-university' },
     { title: 'Spiderman: Across The SpiderVerse', genre: 'Action', image: 'movie3.jpg', link: 'movies/spiderman-across-the-spiderverse' },
@@ -38,17 +38,30 @@ const movies = [
     { title: 'Cars', genre: 'Action', image: 'movie3.jpg', link: 'movies/cars' },
 ];
 
-const movieList = document.getElementById('movie-list');
+const movies2 = [
+    { title: 'Coming Soon!', genre: 'N/A', image: 'movie4.jpg', link: 'movies/movie-1' },
+    { title: 'Coming Soon!', genre: 'N/A', image: 'movie4.jpg', link: 'movies/movie-2' },
+    { title: 'Coming Soon!', genre: 'N/A', image: 'movie4.jpg', link: 'movies/movie-3' },
+    // Add more movies for the second list as needed
+];
 
-movies.forEach(movie => {
-    const movieCard = document.createElement('div');
-    movieCard.classList.add('movie-card');
-    movieCard.innerHTML = `
-        <a href="${movie.link}">
-            <img src="${movie.image}" alt="${movie.title}">
-            <h2>${movie.title}</h2>
-            <p>Genre: ${movie.genre}</p>
-        </a>
-    `;
-    movieList.appendChild(movieCard);
-});
+const movieList1 = document.getElementById('movie-list');
+const movieList2 = document.getElementById('movie-list-2');
+
+function createMovieCards(movieList, movies) {
+    movies.forEach(movie => {
+        const movieCard = document.createElement('div');
+        movieCard.classList.add('movie-card');
+        movieCard.innerHTML = `
+            <a href="${movie.link}">
+                <img src="${movie.image}" alt="${movie.title}">
+                <h2>${movie.title}</h2>
+                <p>Genre: ${movie.genre}</p>
+            </a>
+        `;
+        movieList.appendChild(movieCard);
+    });
+}
+
+createMovieCards(movieList1, movies1);
+createMovieCards(movieList2, movies2);
