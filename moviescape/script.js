@@ -29,6 +29,14 @@ if (!userpermKey) {
     document.cookie = cookie;
 }
 
+// Function to toggle settings menu visibility
+const settingsIcon = document.getElementById('settings-icon');
+const settingsMenu = document.getElementById('settings-menu');
+
+settingsIcon.addEventListener('click', () => {
+    settingsMenu.classList.toggle('active');
+});
+
 // The rest of your code for creating movie cards
 const movies1 = [
     { title: 'The Super Mario Bros', genre: 'Adventure', image: 'movie1.jpg', link: 'movies/the-super-mario-bros' },
