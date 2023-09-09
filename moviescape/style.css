@@ -58,22 +58,22 @@ a:hover {
     color: #51545c;
 }
 
-/* Style for the settings menu */
+/* styles.css */
+
+/* ... Previous CSS Rules ... */
+
+/* New Settings Menu Styling */
 .settings-menu {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #333; /* Greyish black background */
-    border: 2px solid #555; /* Lighter border */
-    border-radius: 10px;
-    padding: 20px;
-    width: 80%; /* 80% of the screen width */
-    max-width: 1920px; /* Maximum width of 1920px */
-    max-height: 1080px; /* Maximum height of 1080px */
-    overflow: auto; /* Enable scrolling if content exceeds the menu's height */
-    z-index: 9999; /* Ensure it's on top of other elements */
-    display: none; /* Initially hidden */
+    background-color: #333; /* Greyish black fill */
+    border: 2px solid #444; /* Lighter borders */
+    padding: 20px; /* Add padding for spacing inside the menu */
+    max-width: 400px; /* Adjust the width as needed */
+    width: 80%; /* Adjust the width as needed */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a shadow for depth */
 }
 
 .settings-menu ul {
@@ -81,17 +81,16 @@ a:hover {
     padding: 0;
 }
 
-.settings-menu ul li {
-    margin-bottom: 10px;
+.settings-menu li {
+    margin: 10px 0;
 }
 
 .settings-menu a {
-    color: #fff;
     text-decoration: none;
-    font-size: 18px;
+    color: #fff;
+    font-size: 18px; /* Adjust the font size as needed */
 }
 
-/* Show the menu when settings icon is clicked */
-.settings-icon.active + .settings-menu {
-    display: block;
+.settings-menu a:hover {
+    color: #00bcd4; /* Change the link color when hovering */
 }
