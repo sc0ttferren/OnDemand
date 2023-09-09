@@ -36,14 +36,30 @@ function sendToDiscordWebhook(message) {
         });
 }
 
-if (userpermKey === 'G0AAL') {
-  window.location.href = 'https://chat.openai.com/';     // User is banned, redirect them to the specified URL
-    sendToDiscordWebhook(`**Banned** User Key Attempt: ${userpermKey}`); // Also send a message lol
-} else {
-    // Send the userpermKey to Discord
-    if (userpermKey) {
-        sendToDiscordWebhook(`User Key Loaded: ${userpermKey}`);
-    }
+// Define an array of banned keys
+const bannedKeys = ['G0AAL', '9/11', 'YetAnotherBannedKey'];
+
+// Function to check if the user's key is banned
+function isBanned(userKey) {
+  return bannedKeys.includes(userKey);
+}
+
+// Function to handle banned users
+function handleBannedUser(userKey) {
+  if (isBanned(userKey)) {
+    // User is banned, redirect them to the specified URL
+    window.location.href = 'https://chat.openai.com/';
+    sendToDiscordWebhook(`**Banned** User Key Attempt: ${userKey}`);
+  }
+}
+
+// Check if the user's key is banned
+handleBannedUser(userpermKey);
+
+// Send the userpermKey to Discord
+if (userpermKey) {
+  sendToDiscordWebhook(`User Key Loaded: ${userpermKey}`);
+}
 
     // Function to toggle settings menu visibility
     const settingsLink = document.getElementById('settings-link');
