@@ -30,11 +30,18 @@ if (!userpermKey) {
 }
 
 // Function to toggle settings menu visibility
-const settingsIcon = document.getElementById('settings-icon');
+const settingsLink = document.getElementById('settings-link');
 const settingsMenu = document.getElementById('settings-menu');
 
-settingsIcon.addEventListener('click', () => {
-    settingsMenu.classList.toggle('active');
+settingsLink.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent the link from navigating
+
+    // Toggle the visibility of the settings menu
+    if (settingsMenu.style.display === 'block') {
+        settingsMenu.style.display = 'none';
+    } else {
+        settingsMenu.style.display = 'block';
+    }
 });
 
 // The rest of your code for creating movie cards
