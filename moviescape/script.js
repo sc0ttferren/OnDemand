@@ -5,7 +5,6 @@ const movies = [
     { title: 'Spiderman: Across The SpiderVerse', genre: 'Action', image: 'movie3.jpg', link: 'movies/spiderman-across-the-spiderverse' },
     { title: 'Blue Beetle', genre: 'Action', image: 'movie3.jpg', link: 'movies/blue-beetle' },
     { title: 'Cars', genre: 'Action', image: 'movie3.jpg', link: 'movies/cars' },
-    // Add more movies as needed
 ];
 
 const movieList = document.getElementById('movie-list');
@@ -29,34 +28,19 @@ function setCookie(name, value, days) {
     document.cookie = cookie;
 }
 
-// Generate a random value and set it as a cookie (if not already set)
-const userpermKey = getCookie('userpermKey') || generateRandomValue();
+// Generate a random value and set it as a cookie
+const userpermKey = generateRandomValue();
 setCookie('userpermKey', userpermKey, 18250); // 18250 days (50 years) expiration
 
-// Calculate the number of rows and maximum movies per row
-const numRows = Math.min(Math.ceil(movies.length / 5), 15);
-
-// Create rows of movies
-for (let row = 0; row < numRows; row++) {
-    const movieRow = document.createElement('div');
-    movieRow.classList.add('movie-row');
-
-    for (let col = 0; col < 5; col++) {
-        const movieIndex = row * 5 + col;
-        if (movieIndex >= movies.length) break;
-
-        const movie = movies[movieIndex];
-        const movieCard = document.createElement('div');
-        movieCard.classList.add('movie-card');
-        movieCard.innerHTML = `
-            <a href="${movie.link}">
-                <img src="${movie.image}" alt="${movie.title}">
-                <h2>${movie.title}</h2>
-                <p>Genre: ${movie.genre}</p>
-            </a>
-        `;
-        movieRow.appendChild(movieCard);
-    }
-
-    movieList.appendChild(movieRow);
-}
+movies.forEach(movie => {
+    const movieCard = document.createElement('div');
+    movieCard.classList.add('movie-card');
+    movieCard.innerHTML = `
+        <a href="${movie.link}">
+            <img src="${movie.image}" alt="${movie.title}">
+            <h2>${movie.title}</h2>
+            <p>Genre: ${movie.genre}</p>
+        </a>
+    `;
+    movieList.appendChild(movieCard);
+});
