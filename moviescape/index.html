@@ -7,42 +7,17 @@
     <link rel="stylesheet" href="style.css">
     <!-- MovieScape Favicon cause it's cool -->
     <link rel="icon" type="image/png" href="https://github-production-user-asset-6210df.s3.amazonaws.com/100329425/265307460-71bee8b1-cbb4-4da7-9378-21730d6f6fc6.png">
-    <style>
-        /* Add your CSS for the settings menu here */
-        .settings-container {
-            position: fixed;
-            top: 0;
-            right: 0;
-            padding: 20px;
-            background-color: #333;
-            color: #fff;
-            border-bottom-left-radius: 50%;
-            cursor: pointer;
-        }
-
-        .settings-icon {
-            font-size: 24px;
-        }
-
-        .settings-menu {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .settings-menu.active {
-            display: block;
-        }
-    </style>
 </head>
 <body>
     <header>
         <h1>MovieScape</h1>
+        <!-- Settings Icon for the Menu -->
+        <div id="settings-icon" class="settings-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 10c.3-.8.1-1.7-.5-2.4l-1.7-2.9c-.2-.3-.5-.4-.9-.4s-.7.1-.9.4l-1.7 2.9c-.5.7-.7 1.6-.5 2.4-.7.2-1.6 0-2.3-.5L7.1 9.2c-.6-.4-1.4-.4-2 0L3.5 11.9c-.8.3-1.7.1-2.4-.5-.2-.3-.4-.5-.4-.9s.1-.7.4-.9l2.9-1.7c.5-.3.7-1.1.4-1.7L3.5 4.1c-.3-.5-.3-1.3.1-1.8s1.3-.8 1.8-.1l2.7 2.7c.6.4 1.4.4 2 0l2.7-2.7c.5-.5 1.3-.4 1.8.1s.4 1.3-.1 1.8L14.9 7c-.3.5-.3 1.3.1 1.8s1.3.8 1.8.1l2.7-2.7c.6-.6 1.5-.6 2 0l2.7 2.7c.5.5.8 1.3.1 1.8s-1.3.4-1.8-.1l-2.7-2.7c-.5-.5-1.3-.4-1.8.1z"></path>
+            </svg>
+        </div>
     </header>
     <main>
         <section id="movie-list">
@@ -52,24 +27,18 @@
             <!-- 2nd Movie Cards List Dynamic Auto-Add -->
         </section>
     </main>
+    <div id="settings-menu" class="settings-menu">
+        <!-- Settings menu content here -->
+        <ul>
+            <li><a href="#">Option 1</a></li>
+            <li><a href="#">Option 2</a></li>
+            <li><a href="#">Option 3</a></li>
+            <!-- Add more options as needed -->
+        </ul>
+    </div>
     <footer>
         <p>&copy; 2023-24 Scott's Theatres</p>
     </footer>
-
-    <!-- Add your settings menu HTML here -->
-    <div class="settings-container" id="settings-icon">
-        <span class="settings-icon">⚙️</span>
-    </div>
-    <div class="settings-menu" id="settings-menu">
-        <!-- Add your settings menu content here -->
-        <h2>Settings</h2>
-        <!-- Example settings options -->
-        <label for="theme">Select Theme:</label>
-        <select id="theme">
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-        </select>
-    </div>
 
     <script src="script.js"></script>
 
