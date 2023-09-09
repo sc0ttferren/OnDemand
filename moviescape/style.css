@@ -103,3 +103,9 @@ a:hover {
 .settings-menu.show {
     display: block;
 }
+
+/* Adjust the size of the settings icon */
+.settings-icon a img {
+    width: 24px; /* Set the width to your preferred size */
+    height: 24px; /* Set the height to your preferred size */
+}
