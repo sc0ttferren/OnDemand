@@ -60,6 +60,7 @@ a:hover {
 
 /* New Settings Menu Styling */
 .settings-menu {
+    display: none; /* Hide the settings menu by default */
     position: fixed;
     top: 50%;
     left: 50%;
@@ -96,4 +97,9 @@ a:hover {
 
 .settings-menu a:hover {
     color: #00bcd4; /* Change the link color when hovering */
+}
+
+/* Show the settings menu when the 'show' class is applied */
+.settings-menu.show {
+    display: block;
 }
