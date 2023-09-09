@@ -36,6 +36,7 @@
     </ul>
 </div>
 
+    <!-- Tab Cloak page -->
 <script>
     function toggleFavicon() {
         const currentFavicon = document.querySelector('link[rel="icon"]');
@@ -52,6 +53,23 @@
     }
 </script>
 
+<!-- About:Blank page -->
+<script>
+    function openAboutBlankTab() {
+        // Create a new window or tab with about:blank
+        const newTab = window.open('about:blank', '_blank');
+
+        // Check if the new window/tab was successfully opened
+        if (newTab) {
+            // Copy the content of the original page into the new window/tab
+            newTab.document.write(document.documentElement.outerHTML);
+            newTab.document.close();
+        } else {
+            // Handle the case where the new window/tab couldn't be opened
+            alert('Pop-up blocked. Please allow pop-ups for this site.');
+        }
+    }
+</script>
 
     </div>
     <footer>
