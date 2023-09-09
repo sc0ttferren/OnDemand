@@ -7,10 +7,3 @@ const settingsMenu = document.getElementById('settings-menu');
 settingsIcon.addEventListener('click', () => {
  settingsMenu.classList.toggle('active');
 });
-
-// Close the settings menu when clicking outside of it
-document.addEventListener('click', (event) => {
- if (!settingsIcon.contains(event.target) && !settingsMenu.contains(event.target)) {
- settingsMenu.classList.remove('active');
- }
-});
