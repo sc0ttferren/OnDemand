@@ -13,7 +13,7 @@ function generateRandomValue() {
 function setCookie(name, value, days) {
     const expires = new Date();
     expires.setFullYear(expires.getFullYear() + 50); // Set expiration to 50 years from now
-    const cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;domain=.example.com`;
+    const cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;domain=.scottstheatres.vercel.app/`;
     document.cookie = cookie;
 }
 
