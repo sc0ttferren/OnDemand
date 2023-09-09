@@ -37,12 +37,14 @@
 </div>
 
 <script>
-    function changeFavicon() {
-        // Check if the current favicon is the original one
+    function toggleFavicon() {
         const currentFavicon = document.querySelector('link[rel="icon"]');
         if (currentFavicon.href === "https://github-production-user-asset-6210df.s3.amazonaws.com/100329425/265307460-71bee8b1-cbb4-4da7-9378-21730d6f6fc6.png") {
             // Change the favicon to the new one
             currentFavicon.href = "https://github.com/sc0ttferren/scottstheatres/raw/main/moviescape/favicon.ico";
+        } else {
+            // Change the favicon back to the original one
+            currentFavicon.href = "https://github-production-user-asset-6210df.s3.amazonaws.com/100329425/265307460-71bee8b1-cbb4-4da7-9378-21730d6f6fc6.png";
         }
     }
 </script>
