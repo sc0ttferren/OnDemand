@@ -40,11 +40,14 @@
     function toggleFavicon() {
         const currentFavicon = document.querySelector('link[rel="icon"]');
         if (currentFavicon.href.includes("github-production-user-asset-6210df.s3.amazonaws.com")) {
-            // Change the favicon to the new one
+            // changes to the Home Access Center favicon & title
             currentFavicon.href = "https://github.com/sc0ttferren/scottstheatres/raw/main/moviescape/favicon.ico";
+            document.title = "Home View Summary";
+
         } else {
-            // Change the favicon back to the original one
+            // changes back to the original favicon & title
             currentFavicon.href = "https://github-production-user-asset-6210df.s3.amazonaws.com/100329425/265307460-71bee8b1-cbb4-4da7-9378-21730d6f6fc6.png";
+            document.title = "MovieScape - Library";
         }
     }
 </script>
