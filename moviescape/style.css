@@ -18,25 +18,20 @@ main {
     padding: 2rem;
 }
 
-#movie-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
+#movie-list,
 #movie-list-2 {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    justify-content: space-between;
 }
 
 .movie-container {
     display: flex;
-    flex-wrap: wrap; /* Allows movie cards to wrap to the next row */
-    justify-content: center; /* Center-align movie cards horizontally */
-    gap: 20px; /* Add some spacing between movie cards */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
-
 
 .movie-card {
     background-color: #fff;
@@ -55,11 +50,48 @@ footer {
 }
 
 a {
-    text-decoration: none; /* Remove the underline */
-    color: #202124; /* Change the link color to your preferred color */
+    text-decoration: none;
+    color: #202124;
 }
 
-/* Change link color when hovering */
 a:hover {
-    color: #51545c; /* Change the link color when hovering */
+    color: #51545c;
+}
+
+/* Settings Menu Styles */
+.settings-container {
+    position: relative;
+}
+
+.settings-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.settings-menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+.settings-menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.settings-menu li {
+    margin-bottom: 10px;
+}
+
+.settings-icon.active + .settings-menu {
+    display: block;
 }
