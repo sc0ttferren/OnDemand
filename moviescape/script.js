@@ -1,22 +1,3 @@
-// Function to generate a random 5-character string
-function generateRandomValue() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-    for (let i = 0; i < 5; i++) {
-        const randomIndex = Math.floor(Math.random() * characters.length);
-        result += characters.charAt(randomIndex);
-    }
-    return result;
-}
-
-// Function to set a cookie with the generated value
-function setCookie(name, value, days) {
-    const expires = new Date();
-    expires.setDate(expires.getDate() + days); // Set expiration to the specified number of days from now
-    const cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;domain=.scottstheatres.vercel.app/moviescape/`;
-    document.cookie = cookie;
-}
-
 // Function to check if a cookie with the given name exists
 function getCookie(name) {
     const cookies = document.cookie.split(';');
@@ -29,14 +10,22 @@ function getCookie(name) {
     return null;
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    let userpermKey = getCookie('userpermKey');
+const userpermKey = getCookie('userpermKey');
 
-    if (!userpermKey) {
-        // Cookie doesn't exist, generate a random value and set it as a cookie
-        userpermKey = generateRandomValue();
-        setCookie('userpermKey', userpermKey, 18250); // 18250 days (50 years) expiration
+if (!userpermKey) {
+    // Cookie doesn't exist, so generate and set it
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < 5; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters.charAt(randomIndex);
     }
+
+    const expires = new Date();
+    expires.setFullYear(expires.getFullYear() + 50); // Set expiration to 50 years from now
+    const cookie = `userpermKey=${result};expires=${expires.toUTCString()};path=/;domain=.scottstheatres.vercel.app`;
+    document.cookie = cookie;
+}
 
     // Function to send a message to a Discord webhook
     function sendToDiscordWebhook(message) {
