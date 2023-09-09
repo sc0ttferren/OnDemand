@@ -1,4 +1,3 @@
-Copy code
 // Function to generate a random 5-character string
 function generateRandomValue() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
