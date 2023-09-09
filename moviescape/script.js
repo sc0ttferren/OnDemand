@@ -81,3 +81,20 @@ function createMovieCards(movieList, movies) {
 
 createMovieCards(movieList1, movies1);
 createMovieCards(movieList2, movies2);
+
+// it toggles the checkmark and toggles the favicon
+function toggleTabCloak() {
+    const tabCloakOption = document.getElementById('tab-cloak-option');
+    const favicon = document.querySelector('link[rel="icon"]');
+
+    if (tabCloakOption.classList.contains('checked')) {
+        tabCloakOption.classList.remove('checked');
+        favicon.href = 'favicon-original.png'; // Change to your original favicon
+    } else {
+        tabCloakOption.classList.add('checked');
+        favicon.href = 'favicon-tabcloak.png'; // Change to your tab cloak favicon
+    }
+}
+
+// Add a click event listener to the "Tab Cloak" option
+document.getElementById('tab-cloak-option').addEventListener('click', toggleTabCloak);
