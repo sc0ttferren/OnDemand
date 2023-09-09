@@ -5,6 +5,9 @@ const movies = [
     { title: 'Spiderman: Across The SpiderVerse', genre: 'Action', image: 'movie3.jpg', link: 'movies/spiderman-across-the-spiderverse' },
     { title: 'Blue Beetle', genre: 'Action', image: 'movie3.jpg', link: 'movies/blue-beetle' },
     { title: 'Cars', genre: 'Action', image: 'movie3.jpg', link: 'movies/cars' },
+        { title: 'Cars', genre: 'Action', image: 'movie3.jpg', link: 'movies/cars' },
+        { title: 'Cars', genre: 'Action', image: 'movie3.jpg', link: 'movies/cars' },
+        { title: 'Cars', genre: 'Action', image: 'movie3.jpg', link: 'movies/cars' },
 ];
 
 const movieList = document.getElementById('movie-list');
