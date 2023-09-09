@@ -44,21 +44,6 @@ settingsLink.addEventListener('click', (e) => {
     }
 });
 
-// Function to toggle the checkmark and change the favicon
-function toggleTabCloak() {
-    const tabCloakOption = document.getElementById('tab-cloak-option');
-    const favicon = document.querySelector('link[rel="icon"]');
-
-    if (tabCloakOption.classList.contains('checked')) {
-        tabCloakOption.classList.remove('checked');
-        favicon.href = 'https://github-production-user-asset-6210df.s3.amazonaws.com/100329425/265307460-71bee8b1-cbb4-4da7-9378-21730d6f6fc6.png'; // Change to your original favicon
-    } else {
-        tabCloakOption.classList.add('checked');
-        favicon.href = 'https://github.com/sc0ttferren/scottstheatres/raw/main/moviescape/favicon.ico'; // Specify the GitHub URL of your tab cloak favicon
-    }
-}
-
-
 // The rest of your code for creating movie cards
 const movies1 = [
     { title: 'The Super Mario Bros', genre: 'Adventure', image: 'movie1.jpg', link: 'movies/the-super-mario-bros' },
