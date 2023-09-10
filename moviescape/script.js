@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Display the user's key in the settings menu
-  userKeyElement.textContent = `Your Personal Key (don't share it!): ${userpermKey}`;
+  userKeyElement.textContent = `Your Personal Key: ${userpermKey}`;
   
   // Function to send a message to a Discord webhook
   function sendToDiscordWebhook(message) {
