@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Define an array of banned keys
-  const bannedKeys = ['G0AAL', '46207', 'YetAnotherBannedKey'];
+  const bannedKeys = ['G0AAL', 'iwannabansomebody', 'plslemmebanyou'];
 
   // Function to check if the user's key is banned
   function isBanned(userKey) {
