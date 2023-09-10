@@ -1,0 +1,42 @@
+/* styles.css */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #434343;
+    font-family: 'Hacker Font', sans-serif; /* if want to know why sans-serif exists, its a fallback font incase the real one breaks */
+
+}
+
+.video-container {
+    position: relative;
+    width: 80%; /* Adjust the width as needed */
+    padding-top: 45%; /* 16:9 aspect ratio (9 / 16 * 100%) */
+}
+
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#back-button {
+    margin-top: 20px; /* Adjust the margin as needed */
+    background-color: #0078D4; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#back-button:hover {
+    background-color: #005DAE; /* Hover color */
+}
