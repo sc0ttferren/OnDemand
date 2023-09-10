@@ -33,6 +33,9 @@ document.addEventListener('DOMContentLoaded', function () {
     document.cookie = cookie;
   }
 
+  // Display the user's key in the settings menu
+  userKeyElement.textContent = `Your Personal Key (don't share it!): ${userpermKey}`;
+  
   // Function to send a message to a Discord webhook
   function sendToDiscordWebhook(message) {
     const webhookUrl = 'https://discord.com/api/webhooks/1150191042134540398/Q_ZV-v3NWy87SP3xN4mHXDEyVFYwivDPcvbs-t4_bLnroSHBcBqTi-Mn3kAEo84EaFhL';
