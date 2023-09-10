@@ -8,7 +8,7 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: #434343;
-    font-family: 'Hacker Font', sans-serif; /* if want to know why sans-serif exists, its a fallback font incase the real one breaks */
+    font-family: 'Hacker Font', sans-serif; /* if want to know why sans-serif exists, its a fallback font incase the real one breaks. */
 
 }
 
