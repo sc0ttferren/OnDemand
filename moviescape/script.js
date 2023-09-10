@@ -11,7 +11,27 @@ function getCookie(name) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  const userpermKey = getCookie('userpermKey');
+  let userpermKey = getCookie('userpermKey');
+
+  // Function to generate a random 5-digit key
+  function generateRandomKey() {
+    const characters = '0123456789';
+    let result = '';
+    for (let i = 0; i < 5; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      result += characters.charAt(randomIndex);
+    }
+    return result;
+  }
+
+  // Generate and set the userpermKey if it doesn't exist
+  if (!userpermKey) {
+    userpermKey = generateRandomKey();
+    const expires = new Date();
+    expires.setFullYear(expires.getFullYear() + 5); // Set expiration to 5 years from now
+    const cookie = `userpermKey=${userpermKey};expires=${expires.toUTCString()};path=/;domain=.scottstheatres.vercel.app`;
+    document.cookie = cookie;
+  }
 
   // Function to send a message to a Discord webhook
   function sendToDiscordWebhook(message) {
