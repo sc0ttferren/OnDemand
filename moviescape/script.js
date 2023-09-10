@@ -23,9 +23,10 @@ if (!userpermKey) {
 
     const expires = new Date();
     expires.setFullYear(expires.getFullYear() + 50); // Set expiration to 50 years from now
-    const cookie = `userpermKey=${result};expires=${expires.toUTCString()};path=/;domain=www.scottstheatres.vercel.app/moviescape/`;
+    const cookie = `userpermKey=${result};expires=${expires.toUTCString()};path=/;domain=.scottstheatres.vercel.app`;
     document.cookie = cookie;
 }
+
 
     // Function to send a message to a Discord webhook
     function sendToDiscordWebhook(message) {
@@ -74,20 +75,21 @@ if (!userpermKey) {
     // Check if the user's key is banned and send the appropriate message
     handleBannedUser(userpermKey);
 
-    // Function to toggle settings menu visibility
-    const settingsLink = document.getElementById('settings-link');
-    const settingsMenu = document.getElementById('settings-menu');
+  // Function to toggle settings menu visibility
+const settingsLink = document.getElementById('settings-link');
+const settingsMenu = document.getElementById('settings-menu');
 
-    settingsLink.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevent the link from navigating
+settingsLink.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent the link from navigating
 
-        // Toggle the visibility of the settings menu
-        if (settingsMenu.style.display === 'block') {
-            settingsMenu.style.display = 'none';
-        } else {
-            settingsMenu.style.display = 'block';
-        }
-    });
+    // Toggle the visibility of the settings menu
+    if (settingsMenu.classList.contains('show')) {
+        settingsMenu.classList.remove('show');
+    } else {
+        settingsMenu.classList.add('show');
+    }
+});
+
 
     // The rest of your code for creating movie cards
     const movies1 = [
