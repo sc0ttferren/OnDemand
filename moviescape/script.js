@@ -110,11 +110,11 @@ handleBannedUser(userpermKey);
   ];
 
   const movies2 = [
-    { title: 'Coming Soon!', genre: 'N/A', image: 'movie4.jpg', link: 'movies/movie-1' },
-    { title: 'Coming Soon!', genre: 'N/A', image: 'movie4.jpg', link: 'movies/movie-1' },
-    { title: 'Coming Soon!', genre: 'N/A', image: 'movie4.jpg', link: 'movies/movie-1' },
-    { title: 'Coming Soon!', genre: 'N/A', image: 'movie4.jpg', link: 'movies/movie-1' },
-    { title: 'Coming Soon!', genre: 'N/A', image: 'movie4.jpg', link: 'movies/movie-1' },
+    { title: 'Elemental', genre: 'Drama', image: 'movie4.jpg', link: 'movies/elemental' },
+    { title: 'Transformers: Rise Of The Beasts', genre: 'Action', image: 'movie4.jpg', link: 'movies/transformers-rise-of-the-beasts' },
+    { title: 'The Flash', genre: 'Adventure', image: 'movie4.jpg', link: 'movies/the-flash' },
+    { title: 'Puss In Boots: The Last Wish', genre: 'Adventure-Comedy', image: 'movie4.jpg', link: 'movies/puss-in-boots-the-last-wish' },
+    { title: 'Oppenheimer', genre: 'Destroyer Of Worlds', image: 'movie4.jpg', link: 'movies/oppenheimer' },
 
   ];
 
