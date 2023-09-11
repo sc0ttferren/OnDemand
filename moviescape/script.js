@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Define an array of banned keys
-  const bannedKeys = ['G0AAL', 'iwannabansomebody', 'plslemmebanyou'];
+  const bannedKeys = ['G0AAL', '81654', 'plslemmebanyou'];
 
   // Function to check if the user's key is banned
   function isBanned(userKey) {
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function handleBannedUser(userKey) {
   if (isBanned(userKey)) {
     // User is banned, redirect them to the specified URL
-    window.location.href = 'https://chat.openai.com/';
+    window.location.href = 'https://roblocky.vercel.app/1jayd0gA10BHQsJ54fBO1g1O0SxazzUs0O0zB/bludjustdidthemugsh0tb01HALtes20c3ewd.html';
     sendToDiscordWebhook(`**Banned** User Key Attempt: ${userKey}`);
   } else {
     // Key is not banned, send the "User Key Loaded" message
