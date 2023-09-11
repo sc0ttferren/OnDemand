@@ -118,8 +118,18 @@ handleBannedUser(userpermKey);
 
   ];
 
+    const movies3 = [
+    { title: 'Coco', genre: 'Adventure', image: 'movie4.jpg', link: 'movies/coco' },
+    { title: 'Coming Soon!', genre: 'WIP', image: 'movie4.jpg', link: 'movies/' },
+    { title: 'Coming Soon!', genre: 'WIP', image: 'movie4.jpg', link: 'movies/' },
+    { title: 'Coming Soon!', genre: 'WIP', image: 'movie4.jpg', link: 'movies/' },
+    { title: 'Coming Soon!', genre: 'WIP', image: 'movie4.jpg', link: 'movies/' },
+      
+  ];
+
   const movieList1 = document.getElementById('movie-list');
   const movieList2 = document.getElementById('movie-list-2');
+  const movieList3 = document.getElementById('movie-list-3');
 
   function createMovieCards(movieList, movies) {
     movies.forEach(movie => {
