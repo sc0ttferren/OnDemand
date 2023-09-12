@@ -8,7 +8,7 @@
     
     <title>Scott's Theatres - Choosing</title>
     
-    <style>
+      <style>
         /* Styles for the popup */
         .popup {
             display: none;
@@ -27,8 +27,13 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
             width: 80%;
             max-width: 400px;
-            margin: 100px auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             padding: 20px;
+            opacity: 0; /* Start with opacity set to 0 */
+            transition: opacity 0.3s ease; /* Add a transition effect for opacity */
         }
         
         /* Styles for the close button */
@@ -69,16 +74,16 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
-    <footer class="footer">
-        <p>&copy; 2023-24 Scott's Theatres</p>
-    </footer>
-
     <script>
         // Function to show the popup
         function showPopup() {
             const popup = document.getElementById('popup');
             popup.style.display = 'block';
+            setTimeout(() => {
+                // Fade in the popup
+                const popupContent = document.querySelector('.popup-content');
+                popupContent.style.opacity = 1;
+            }, 100);
         }
 
         // Function to hide the popup
@@ -95,6 +100,9 @@
         moviescapeButton.addEventListener('click', showPopup);
         tvrealmButton.addEventListener('click', showPopup);
         closePopupButton.addEventListener('click', hidePopup);
+
+        // Show the popup on page load
+        window.addEventListener('load', showPopup);
     </script>
 </body>
 </html>
