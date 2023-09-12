@@ -137,7 +137,7 @@ handleBannedUser(userpermKey);
       movieCard.classList.add('movie-card');
       movieCard.innerHTML = `
         <a href="${movie.link}">
-          <img src="${movie.image}" alt="${movie.title}">
+          <img src="${movie.image}" alt="${movie.image}">
           <h2>${movie.title}</h2>
           <p>Genre: ${movie.genre}</p>
         </a>
