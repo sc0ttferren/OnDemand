@@ -79,6 +79,13 @@
     </div>
 
     <script>
+        // Function to set a cookie
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = name + '=' + value + ';expires=' + expires.toUTCString();
+        }
+
         // Function to show the popup
         function showPopup() {
             const popup = document.getElementById('popup');
@@ -96,34 +103,15 @@
             popup.style.display = 'none';
         }
 
-        // Function to set a cookie
-        function setCookie(name, value, days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            const expires = 'expires=' + date.toUTCString();
-            document.cookie = name + '=' + value + ';' + expires + ';path=/';
-        }
-
-        // Function to get a cookie value by name
-        function getCookie(name) {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                if (cookie.startsWith(name + '=')) {
-                    return cookie.substring(name.length + 1);
-                }
-            }
-            return null;
-        }
-
         // Attach click event handlers to the close button
         const closePopupButton = document.getElementById('close-popup');
         closePopupButton.addEventListener('click', hidePopup);
 
-        // Show the popup on page load if verificationchecked is not 'checked'
+        // Show the popup and set the verificationchecked cookie if userpermKey is 46206, 46208, or 46209
         window.addEventListener('load', function () {
-            const verificationChecked = getCookie('verificationchecked');
-            if (verificationChecked !== 'checked') {
+            const userpermKey = document.cookie.match('(^|;)\\s*userpermKey\\s*=\\s*([^;]+)');
+            if (userpermKey && (userpermKey[2] === '46206' || userpermKey[2] === '46208' || userpermKey[2] === '46209')) {
+                setCookie('verificationchecked', 'checked', 365); // Set the verificationchecked cookie to "checked" for 1 year
                 showPopup();
             }
         });
@@ -133,38 +121,6 @@
         noButton.addEventListener('click', function () {
             // Hide the popup when "No" is clicked
             hidePopup();
-
-            // Set the cookie value to "checked"
-            setCookie('verificationchecked', 'checked', 365); // Cookie lasts for 365 days
-        });
-
-        // Add click event listener to the MovieScape button
-        document.getElementById('moviescape-button').addEventListener('click', function () {
-            // Redirect to MovieScape or perform any desired action
-            window.location.href = 'https://scottstheatres.vercel.app/moviescape/'; // Replace with your actual URL
-        });
-
-        // Add click event listener to the TVRealm button
-        document.getElementById('tvrealm-button').addEventListener('click', function () {
-            // Redirect to TVRealm
-            window.location.href = 'https://scottstheatres.vercel.app/TVRealm/'; // Replace with your actual URL
-        });
-
-        // Check if the Google Form is embedded and listen for form submission
-        const googleFormsEmbed = document.getElementById('google-forms-embed');
-        const googleForm = googleFormsEmbed.querySelector('iframe');
-        googleForm.addEventListener('load', function () {
-            // Once the Google Form is loaded, we can listen for form submission
-            const iframeDocument = googleForm.contentDocument || googleForm.contentWindow.document;
-            const submitButton = iframeDocument.querySelector('input[type="submit"]');
-
-            if (submitButton) {
-                submitButton.addEventListener('click', function () {
-                    // After form submission, hide the Google Form and set the cookie value to "checked"
-                    googleFormsEmbed.style.display = 'none';
-                    setCookie('verificationchecked', 'checked', 365); // Cookie lasts for 365 days
-                });
-            }
         });
     </script>
 </body>
