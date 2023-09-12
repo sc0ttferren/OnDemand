@@ -147,5 +147,7 @@ handleBannedUser(userpermKey);
   }
 
   createMovieCards(movieList1, movies1);
-  createMovieCards(movieList2, movies2);
+  createMovieCards(movieList2, movies2);   
+  createMovieCards(movieList3, movies3);
+
 });
