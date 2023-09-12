@@ -105,15 +105,15 @@ handleBannedUser(userpermKey);
     { title: 'The Super Mario Bros', genre: 'Adventure', image: 'movie1.jpg', link: 'movies/the-super-mario-bros' },
     { title: 'Monsters Inc.', genre: 'Adventure', image: 'movie1.jpg', link: 'movies/monsters-inc' },
     { title: 'Monsters University', genre: 'Comedy', image: 'movie2.jpg', link: 'movies/monsters-university' },
-    { title: 'Spiderman: Across The SpiderVerse', genre: 'Action', image: 'movie3.jpg', link: 'movies/spiderman-across-the-spiderverse' },
+    { title: 'Spiderman: A.T.SV', genre: 'Action', image: 'Spiderman: Across The SpiderVerse', link: 'movies/spiderman-across-the-spiderverse' },
     { title: 'Blue Beetle', genre: 'Action', image: 'movie3.jpg', link: 'movies/blue-beetle' },
   ];
 
   const movies2 = [
     { title: 'Elemental', genre: 'Drama', image: 'movie4.jpg', link: 'movies/elemental' },
-    { title: 'Transformers: Rise Of The Beasts', genre: 'Action', image: 'movie4.jpg', link: 'movies/transformers-rise-of-the-beasts' },
+    { title: 'Transformers: R.O.T.B', genre: 'Action', image: 'Transformers: Rise Of The Beasts', link: 'movies/transformers-rise-of-the-beasts' },
     { title: 'The Flash', genre: 'Adventure', image: 'movie4.jpg', link: 'movies/the-flash' },
-    { title: 'Puss In Boots: The Last Wish', genre: 'Adventure-Comedy', image: 'movie4.jpg', link: 'movies/puss-in-boots-the-last-wish' },
+    { title: 'Puss In Boots: TLW', genre: 'Adventure-Comedy', image: 'Puss In Boots: The Last Wish', link: 'movies/puss-in-boots-the-last-wish' },
     { title: 'Oppenheimer', genre: 'Destroyer Of Worlds', image: 'movie4.jpg', link: 'movies/oppenheimer' },
 
   ];
