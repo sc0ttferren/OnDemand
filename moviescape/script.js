@@ -102,28 +102,28 @@ handleBannedUser(userpermKey);
 
   // The rest of your code for creating movie cards
   const movies1 = [
-    { title: 'The Super Mario Bros', genre: 'Adventure', image: 'movie1.jpg', link: 'movies/the-super-mario-bros' },
-    { title: 'Monsters Inc.', genre: 'Adventure', image: 'movie1.jpg', link: 'movies/monsters-inc' },
-    { title: 'Monsters University', genre: 'Comedy', image: 'movie2.jpg', link: 'movies/monsters-university' },
+    { title: 'The Super Mario Bros', genre: 'Adventure', image: 'The Super Mario Bro', link: 'movies/the-super-mario-bros' },
+    { title: 'Monsters Inc.', genre: 'Adventure', image: 'Monsters Inc.', link: 'movies/monsters-inc' },
+    { title: 'Monsters University', genre: 'Comedy', image: 'Monsters University', link: 'movies/monsters-university' },
     { title: 'Spiderman: A.T.SV', genre: 'Action', image: 'Spiderman: Across The SpiderVerse', link: 'movies/spiderman-across-the-spiderverse' },
-    { title: 'Blue Beetle', genre: 'Action', image: 'movie3.jpg', link: 'movies/blue-beetle' },
+    { title: 'Blue Beetle', genre: 'Action', image: 'Blue Beetle', link: 'movies/blue-beetle' },
   ];
 
   const movies2 = [
-    { title: 'Elemental', genre: 'Drama', image: 'movie4.jpg', link: 'movies/elemental' },
+    { title: 'Elemental', genre: 'Drama', image: 'Elemental', link: 'movies/elemental' },
     { title: 'Transformers: R.O.T.B', genre: 'Action', image: 'Transformers: Rise Of The Beasts', link: 'movies/transformers-rise-of-the-beasts' },
-    { title: 'The Flash', genre: 'Adventure', image: 'movie4.jpg', link: 'movies/the-flash' },
+    { title: 'The Flash', genre: 'Adventure', image: 'The Flash', link: 'movies/the-flash' },
     { title: 'Puss In Boots: TLW', genre: 'Adventure-Comedy', image: 'Puss In Boots: The Last Wish', link: 'movies/puss-in-boots-the-last-wish' },
-    { title: 'Oppenheimer', genre: 'Destroyer Of Worlds', image: 'movie4.jpg', link: 'movies/oppenheimer' },
+    { title: 'Oppenheimer', genre: 'Destroyer Of Worlds', image: 'Oppenheimer', link: 'movies/oppenheimer' },
 
   ];
 
     const movies3 = [
     { title: 'Coco', genre: 'Adventure', image: 'movie4.jpg', link: 'movies/coco' },
-    { title: 'Elemental', genre: 'Drama', image: 'movie4.jpg', link: 'movies/elemental' },
-    { title: 'Transformers: R.O.T.B', genre: 'Action', image: 'Transformers: Rise Of The Beasts', link: 'movies/transformers-rise-of-the-beasts' },
-    { title: 'The Flash', genre: 'Adventure', image: 'movie4.jpg', link: 'movies/the-flash' },
-    { title: 'Puss In Boots: TLW', genre: 'Adventure-Comedy', image: 'Puss In Boots: The Last Wish', link: 'movies/puss-in-boots-the-last-wish' },
+    { title: 'Coming Soon!', genre: 'WIP', image: 'movie4.jpg', link: 'movies/' },
+    { title: 'Coming Soon!', genre: 'WIP', image: 'movie4.jpg', link: 'movies/' },
+    { title: 'Coming Soon!', genre: 'WIP', image: 'movie4.jpg', link: 'movies/' },
+    { title: 'Coming Soon!', genre: 'WIP', image: 'movie4.jpg', link: 'movies/' },
       
   ];
 
