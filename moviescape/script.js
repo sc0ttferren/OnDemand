@@ -120,10 +120,10 @@ handleBannedUser(userpermKey);
 
     const movies3 = [
     { title: 'Coco', genre: 'Adventure', image: 'movie4.jpg', link: 'movies/coco' },
-    { title: 'Coming Soon!', genre: 'WIP', image: 'movie4.jpg', link: 'movies/' },
-    { title: 'Coming Soon!', genre: 'WIP', image: 'movie4.jpg', link: 'movies/' },
-    { title: 'Coming Soon!', genre: 'WIP', image: 'movie4.jpg', link: 'movies/' },
-    { title: 'Coming Soon!', genre: 'WIP', image: 'movie4.jpg', link: 'movies/' },
+    { title: 'Elemental', genre: 'Drama', image: 'movie4.jpg', link: 'movies/elemental' },
+    { title: 'Transformers: R.O.T.B', genre: 'Action', image: 'Transformers: Rise Of The Beasts', link: 'movies/transformers-rise-of-the-beasts' },
+    { title: 'The Flash', genre: 'Adventure', image: 'movie4.jpg', link: 'movies/the-flash' },
+    { title: 'Puss In Boots: TLW', genre: 'Adventure-Comedy', image: 'Puss In Boots: The Last Wish', link: 'movies/puss-in-boots-the-last-wish' },
       
   ];
 
