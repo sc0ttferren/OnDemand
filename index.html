@@ -43,14 +43,6 @@
             right: 10px;
             cursor: pointer;
         }
-        
-        /* Styles for the embedded Google Form */
-        #google-form-embed {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
     </style>
 </head>
 <body>
@@ -81,17 +73,8 @@
         </div>
     </div>
 
-   <!-- Embed the Google Form initially, but make it hidden -->
-    <iframe
-        id="google-form-embed"
-        src="https://docs.google.com/forms/d/e/1FAIpQLScY8G6GSx0Io1L2Vrt_iL9PgLxF98ozNh-aOjA0KVC8Pxyh0g/viewform?embedded=true"
-        width="640"
-        height="592"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        style="display: none;"  <!-- Initially hide the embed -->
-    >Loading…</iframe>
+    <!-- Embed the Google Form initially, but make it hidden -->
+    <div id="google-form-embed" style="display: none;">Loading…</div>
 
    <script>
         // Function to set a cookie
@@ -122,6 +105,7 @@
         function embedGoogleForm() {
             const googleFormEmbed = document.getElementById('google-form-embed');
             googleFormEmbed.style.display = 'block'; // Show the embed
+            googleFormEmbed.innerHTML = '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScY8G6GSx0Io1L2Vrt_iL9PgLxF98ozNh-aOjA0KVC8Pxyh0g/viewform?embedded=true" width="640" height="592" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>';
         }
 
         // Show the popup and set the verificationchecked cookie if userpermKey is 46206, 46208, or 46209
@@ -146,15 +130,15 @@
             hidePopup();
         });
 
-        // Wait for the iframe to fully load before attaching the submit event listener
-        const googleFormEmbed = document.getElementById('google-form-embed');
-        googleFormEmbed.addEventListener('load', function () {
-            googleFormEmbed.contentWindow.document.forms[0].addEventListener('submit', function () {
+        // Listen for Google Form submission and close the embed after 2 seconds
+        document.addEventListener('submit', function (event) {
+            const googleFormEmbed = document.getElementById('google-form-embed');
+            if (event.target && event.target.tagName.toLowerCase() === 'form') {
                 setTimeout(() => {
                     googleFormEmbed.style.display = 'none'; // Hide the embed after 2 seconds
                     setCookie('verificationchecked', 'checked', 365); // Set the verificationchecked cookie to "checked" after submission
                 }, 2000);
-            });
+            }
         });
     </script>
 </body>
