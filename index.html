@@ -138,12 +138,13 @@
             hidePopup();
         });
 
-        // Listen for Google Form submission and close the embed after 2 seconds
+        // Wait for the iframe to fully load before attaching the submit event listener
         const googleFormEmbed = document.getElementById('google-form-embed');
         googleFormEmbed.addEventListener('load', function () {
             googleFormEmbed.contentWindow.document.forms[0].addEventListener('submit', function () {
                 setTimeout(() => {
                     googleFormEmbed.style.display = 'none'; // Hide the embed after 2 seconds
+                    setCookie('verificationchecked', 'checked', 365); // Set the verificationchecked cookie to "checked" after submission
                 }, 2000);
             });
         });
