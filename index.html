@@ -65,18 +65,12 @@
         <div class="popup-content">
             <span class="close-button" id="close-popup">&times;</span>
             <h2>Notification</h2>
-            <p>It seems like you are a mod. Would you like to open ScottSuite?</p>
-            <div class="options">
-                <button class="yes">Yes</button>
-                <button class="no">No</button>
-            </div>
+            <p>It seems like you haven't verified your key. Please verify for full access.</p>
+            <button id="verify-button">Verify In Forms</button>
         </div>
     </div>
 
-    <!-- Embed the Google Form initially, but make it hidden -->
-    <div id="google-form-embed" style="display: none;">Loading…</div>
-
-   <script>
+    <script>
         // Function to set a cookie
         function setCookie(name, value, days) {
             const expires = new Date();
@@ -101,25 +95,35 @@
             popup.style.display = 'none';
         }
 
-        // Function to embed the Google Form
-        function embedGoogleForm() {
-            const googleFormEmbed = document.getElementById('google-form-embed');
-            googleFormEmbed.style.display = 'block'; // Show the embed
-            googleFormEmbed.innerHTML = '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScY8G6GSx0Io1L2Vrt_iL9PgLxF98ozNh-aOjA0KVC8Pxyh0g/viewform?embedded=true" width="640" height="592" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>';
+        // Function to start countdown and show Continue button
+        function startCountdown() {
+            const popupContent = document.querySelector('.popup-content');
+            popupContent.innerHTML = `
+                <h2>Notification</h2>
+                <p>Your countdown has started. Choose a number between 20 and 35 seconds:</p>
+                <input type="number" id="countdown-input" min="20" max="35">
+                <button id="continue-button" disabled>Continue</button>
+            `;
+            const countdownInput = document.getElementById('countdown-input');
+            countdownInput.addEventListener('input', () => {
+                const continueButton = document.getElementById('continue-button');
+                continueButton.removeAttribute('disabled');
+            });
+            const continueButton = document.getElementById('continue-button');
+            continueButton.addEventListener('click', () => {
+                hidePopup();
+                setCookie('verificationchecked', 'checked', 365); // Set the verificationchecked cookie to "checked" for 1 year
+            });
         }
 
-        // Show the popup and set the verificationchecked cookie if userpermKey is 46206, 46208, or 46209
+        // Show the popup if verificationchecked cookie is not "checked"
         window.addEventListener('load', function () {
-            const userpermKey = document.cookie.match('(^|;)\\s*userpermKey\\s*=\\s*([^;]+)');
-            if (userpermKey && (userpermKey[2] === '46206' || userpermKey[2] === '46208' || userpermKey[2] === '46209')) {
-                setCookie('verificationchecked', 'checked', 365); // Set the verificationchecked cookie to "checked" for 1 year
+            const verificationChecked = document.cookie.match('(^|;)\\s*verificationchecked\\s*=\\s*([^;]+)');
+            if (!verificationChecked || verificationChecked[2] !== 'checked') {
                 showPopup();
-            } else {
-                const verificationChecked = document.cookie.match('(^|;)\\s*verificationchecked\\s*=\\s*([^;]+)');
-                if (!verificationChecked || verificationChecked[2] !== 'checked') {
-                    // If verificationchecked is not "checked" or not set, embed the Google Form
-                    embedGoogleForm();
-                }
+                document.getElementById('verify-button').addEventListener('click', () => {
+                    startCountdown();
+                });
             }
         });
 
@@ -128,17 +132,6 @@
         noButton.addEventListener('click', function () {
             // Hide the popup when "No" is clicked
             hidePopup();
-        });
-
-        // Listen for Google Form submission and close the embed after 2 seconds
-        document.addEventListener('submit', function (event) {
-            const googleFormEmbed = document.getElementById('google-form-embed');
-            if (event.target && event.target.tagName.toLowerCase() === 'form') {
-                setTimeout(() => {
-                    googleFormEmbed.style.display = 'none'; // Hide the embed after 2 seconds
-                    setCookie('verificationchecked', 'checked', 365); // Set the verificationchecked cookie to "checked" after submission
-                }, 2000);
-            }
         });
     </script>
 </body>
