@@ -67,6 +67,7 @@
             <h2>Notification</h2>
             <p>It seems like you haven't verified your key. Please verify for full access.</p>
             <button id="verify-button">Verify In Forms</button>
+            <button id="continue-button" style="display: none;">Continue</button>
         </div>
     </div>
 
@@ -95,25 +96,21 @@
             popup.style.display = 'none';
         }
 
-        // Function to start countdown and show Continue button
+        // Function to start countdown
         function startCountdown() {
-            const popupContent = document.querySelector('.popup-content');
-            popupContent.innerHTML = `
-                <h2>Notification</h2>
-                <p>Your countdown has started. Choose a number between 20 and 35 seconds:</p>
-                <input type="number" id="countdown-input" min="20" max="35">
-                <button id="continue-button" disabled>Continue</button>
-            `;
-            const countdownInput = document.getElementById('countdown-input');
-            countdownInput.addEventListener('input', () => {
-                const continueButton = document.getElementById('continue-button');
-                continueButton.removeAttribute('disabled');
-            });
+            const verifyButton = document.getElementById('verify-button');
             const continueButton = document.getElementById('continue-button');
-            continueButton.addEventListener('click', () => {
-                hidePopup();
-                setCookie('verificationchecked', 'checked', 365); // Set the verificationchecked cookie to "checked" for 1 year
-            });
+
+            verifyButton.style.display = 'none'; // Hide the "Verify In Forms" button
+            continueButton.style.display = 'none'; // Hide the "Continue" button
+            const countdownTime = 20; // 20 seconds countdown
+            const countdownInterval = setInterval(() => {
+                countdownTime--;
+                if (countdownTime <= 0) {
+                    clearInterval(countdownInterval);
+                    continueButton.style.display = 'block'; // Show the "Continue" button
+                }
+            }, 1000);
         }
 
         // Show the popup if verificationchecked cookie is not "checked"
@@ -121,8 +118,10 @@
             const verificationChecked = document.cookie.match('(^|;)\\s*verificationchecked\\s*=\\s*([^;]+)');
             if (!verificationChecked || verificationChecked[2] !== 'checked') {
                 showPopup();
-                document.getElementById('verify-button').addEventListener('click', () => {
-                    startCountdown();
+                document.getElementById('verify-button').addEventListener('click', startCountdown);
+                document.getElementById('continue-button').addEventListener('click', function () {
+                    hidePopup();
+                    setCookie('verificationchecked', 'checked', 365); // Set the verificationchecked cookie to "checked" for 1 year
                 });
             }
         });
