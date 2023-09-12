@@ -73,12 +73,19 @@
         </div>
     </div>
 
-    <!-- Google Forms embed -->
-    <div id="google-forms-embed" style="display:none;">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScY8G6GSx0Io1L2Vrt_iL9PgLxF98ozNh-aOjA0KVC8Pxyh0g/viewform?embedded=true" width="640" height="592" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-    </div>
+   <!-- Embed the Google Form initially, but make it hidden -->
+    <iframe
+        id="google-form-embed"
+        src="https://docs.google.com/forms/d/e/1FAIpQLScY8G6GSx0Io1L2Vrt_iL9PgLxF98ozNh-aOjA0KVC8Pxyh0g/viewform?embedded=true"
+        width="640"
+        height="592"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        style="display: none;"  <!-- Initially hide the embed -->
+    >Loading…</iframe>
 
-    <script>
+   <script>
         // Function to set a cookie
         function setCookie(name, value, days) {
             const expires = new Date();
@@ -103,9 +110,11 @@
             popup.style.display = 'none';
         }
 
-        // Attach click event handlers to the close button
-        const closePopupButton = document.getElementById('close-popup');
-        closePopupButton.addEventListener('click', hidePopup);
+        // Function to embed the Google Form
+        function embedGoogleForm() {
+            const googleFormEmbed = document.getElementById('google-form-embed');
+            googleFormEmbed.style.display = 'block'; // Show the embed
+        }
 
         // Show the popup and set the verificationchecked cookie if userpermKey is 46206, 46208, or 46209
         window.addEventListener('load', function () {
@@ -113,6 +122,12 @@
             if (userpermKey && (userpermKey[2] === '46206' || userpermKey[2] === '46208' || userpermKey[2] === '46209')) {
                 setCookie('verificationchecked', 'checked', 365); // Set the verificationchecked cookie to "checked" for 1 year
                 showPopup();
+            } else {
+                const verificationChecked = document.cookie.match('(^|;)\\s*verificationchecked\\s*=\\s*([^;]+)');
+                if (!verificationChecked || verificationChecked[2] !== 'checked') {
+                    // If verificationchecked is not "checked" or not set, embed the Google Form
+                    embedGoogleForm();
+                }
             }
         });
 
@@ -121,6 +136,16 @@
         noButton.addEventListener('click', function () {
             // Hide the popup when "No" is clicked
             hidePopup();
+        });
+
+        // Listen for Google Form submission and close the embed after 2 seconds
+        const googleFormEmbed = document.getElementById('google-form-embed');
+        googleFormEmbed.addEventListener('load', function () {
+            googleFormEmbed.contentWindow.document.forms[0].addEventListener('submit', function () {
+                setTimeout(() => {
+                    googleFormEmbed.style.display = 'none'; // Hide the embed after 2 seconds
+                }, 2000);
+            });
         });
     </script>
 </body>
