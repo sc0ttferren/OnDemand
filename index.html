@@ -60,18 +60,51 @@
         </div>
     </div>
 
-    <!-- Popup container -->
-    <div class="popup" id="popup">
-        <div class="popup-content">
-            <span class="close-button" id="close-popup">&times;</span>
-            <h2>Notification</h2>
-            <p>It seems like you are a mod. Would you like to open ScottSuite?</p>
-            <div class="options">
-                <button class="yes">Yes</button>
-                <button class="no">No</button>
-            </div>
+<!-- Popup container -->
+<div class="popup" id="popup">
+    <div class="popup-content">
+        <span class="close-button" id="close-popup">&times;</span>
+        <h2>Notification</h2>
+        <p>It seems like you are a mod. Would you like to open ScottSuite?</p>
+        <div class="options">
+            <button class="yes">Yes</button>
+            <button class="no">No</button>
         </div>
     </div>
+</div>
+
+<script>
+    // Function to show the popup
+    function showPopup() {
+        const popup = document.getElementById('popup');
+        popup.style.display = 'block';
+        setTimeout(() => {
+            // Fade in the popup
+            const popupContent = document.querySelector('.popup-content');
+            popupContent.style.opacity = 1;
+        }, 100);
+    }
+
+    // Function to hide the popup
+    function hidePopup() {
+        const popup = document.getElementById('popup');
+        popup.style.display = 'none';
+    }
+
+    // Attach click event handlers to the close button
+    const closePopupButton = document.getElementById('close-popup');
+    closePopupButton.addEventListener('click', hidePopup);
+
+    // Show the popup on page load
+    window.addEventListener('load', showPopup);
+
+    // Add click event listener to the "No" button
+    const noButton = document.querySelector('.no');
+    noButton.addEventListener('click', function () {
+        // Hide the popup when "No" is clicked
+        hidePopup();
+    });
+</script>
 
     <script>
         // Function to show the popup
