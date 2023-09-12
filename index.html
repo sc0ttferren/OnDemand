@@ -5,43 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Home-icon.svg/640px-Home-icon.svg.png">
     <link rel="stylesheet" href="styles.css">
-    <title>Choose A Category</title>
-        <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+    
+    <title>Scott's Theatres - Choosing</title>
+    
+    <style>
+        /* Styles for the popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 9999; /* Ensure the popup is on top of everything */
         }
-        .notification {
-            background-color: #ffffff;
-            border: 1px solid #ccc;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        
+        .popup-content {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            width: 80%;
             max-width: 400px;
-            margin: 20px auto;
+            margin: 100px auto;
+            padding: 20px;
         }
-        .dark-mode {
-            background-color: #333;
-            color: #fff;
-        }
-        .options {
-            text-align: center;
-            margin-top: 20px;
-        }
-        button {
-            padding: 10px 20px;
-            margin: 0 10px;
-            border: none;
-            border-radius: 5px;
+        
+        /* Styles for the close button */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
             cursor: pointer;
-        }
-        button.yes {
-            background-color: #4CAF50;
-            color: #fff;
-        }
-        button.no {
-            background-color: #f44336;
-            color: #fff;
         }
     </style>
 </head>
@@ -60,47 +55,46 @@
             </button>
         </div>
     </div>
-    <script src="script.js"></script>
 
-    <div class="notification">
-        <h2>Notification</h2>
-        <p>It seems like you are a mod. Would you like to open ScottSuite?</p>
-        <div class="options">
-            <button class="yes">Yes</button>
-            <button class="no">No</button>
+    <!-- Popup container -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close-button" id="close-popup">&times;</span>
+            <h2>Notification</h2>
+            <p>It seems like you are a mod. Would you like to open ScottSuite?</p>
+            <div class="options">
+                <button class="yes">Yes</button>
+                <button class="no">No</button>
+            </div>
         </div>
     </div>
-    <script>
-        // Check if the userpermKey cookie value matches one of the allowed values
-        const allowedValues = ["46207", "46208", "46209"];
-        const userpermKey = getCookie("userpermKey");
 
-        if (allowedValues.includes(userpermKey)) {
-            const notification = document.querySelector(".notification");
-            notification.style.display = "block";
-
-            const yesButton = document.querySelector(".yes");
-            const noButton = document.querySelector(".no");
-
-            yesButton.addEventListener("click", () => {
-                // Show admin panel UI in dark mode
-                document.body.classList.add("dark-mode");
-            });
-
-            noButton.addEventListener("click", () => {
-                // Close the notification
-                notification.style.display = "none";
-            });
-        }
-
-        // Function to get the value of a cookie by name
-        function getCookie(name) {
-            const cookieValue = document.cookie.match(`(^|;)\\s*${name}\\s*=\\s*([^;]+)`);
-            return cookieValue ? cookieValue.pop() : null;
-        }
-    </script>
+    <script src="script.js"></script>
     <footer class="footer">
         <p>&copy; 2023-24 Scott's Theatres</p>
     </footer>
+
+    <script>
+        // Function to show the popup
+        function showPopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'block';
+        }
+
+        // Function to hide the popup
+        function hidePopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'none';
+        }
+
+        // Attach click event handlers to the buttons
+        const moviescapeButton = document.getElementById('moviescape-button');
+        const tvrealmButton = document.getElementById('tvrealm-button');
+        const closePopupButton = document.getElementById('close-popup');
+
+        moviescapeButton.addEventListener('click', showPopup);
+        tvrealmButton.addEventListener('click', showPopup);
+        closePopupButton.addEventListener('click', hidePopup);
+    </script>
 </body>
 </html>
