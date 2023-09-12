@@ -8,7 +8,7 @@
     
     <title>Scott's Theatres - Choosing</title>
     
-      <style>
+    <style>
         /* Styles for the popup */
         .popup {
             display: none;
@@ -50,14 +50,18 @@
         <h1 class="header">Choose A Category</h1>
         <div class="emoji-background"></div>
         <div class="button-container">
-            <button id="moviescape-button" class="channel-button">
-                <h2>MovieScape</h2>
-                <p>Free Movies</p>
-            </button>
-            <button id="tvrealm-button" class="channel-button">
-                <h2>TVRealm</h2>
-                <p>Free TV Shows</p>
-            </button>
+            <a href="/moviescape" class="channel-button"> <!-- Modified the button to be a link -->
+                <button id="moviescape-button">
+                    <h2>MovieScape</h2>
+                    <p>Free Movies</p>
+                </button>
+            </a>
+            <a href="/tvrealm" class="channel-button"> <!-- Modified the button to be a link -->
+                <button id="tvrealm-button">
+                    <h2>TVRealm</h2>
+                    <p>Free TV Shows</p>
+                </button>
+            </a>
         </div>
     </div>
 
@@ -92,13 +96,8 @@
             popup.style.display = 'none';
         }
 
-        // Attach click event handlers to the buttons
-        const moviescapeButton = document.getElementById('moviescape-button');
-        const tvrealmButton = document.getElementById('tvrealm-button');
+        // Attach click event handlers to the close button
         const closePopupButton = document.getElementById('close-popup');
-
-        moviescapeButton.addEventListener('click', showPopup);
-        tvrealmButton.addEventListener('click', showPopup);
         closePopupButton.addEventListener('click', hidePopup);
 
         // Show the popup on page load
