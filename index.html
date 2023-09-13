@@ -67,7 +67,8 @@
             <h2>Notification</h2>
             <p>It seems like you haven't verified your key. Please verify for full access.</p>
             <button id="verify-button">Verify In Forms</button>
-            <button id="continue-button" style="display: none;">Continue</button>
+            <div id="timer" style="display: none;">6 seconds remaining</div>
+            <button id="submit-button" style="display: none;">Submit</button>
         </div>
     </div>
 
@@ -100,16 +101,18 @@
         // Function to start countdown
         function startCountdown() {
             const verifyButton = document.getElementById('verify-button');
-            const continueButton = document.getElementById('continue-button');
+            const timer = document.getElementById('timer');
+            const submitButton = document.getElementById('submit-button');
 
             verifyButton.style.display = 'none'; // Hide the "Verify In Forms" button
-            continueButton.style.display = 'none'; // Hide the "Continue" button
-            const countdownTime = 20; // 20 seconds countdown
+            timer.style.display = 'block'; // Show the timer
+            let countdownTime = 6; // 6 seconds countdown
             const countdownInterval = setInterval(() => {
                 countdownTime--;
+                timer.textContent = `${countdownTime} seconds remaining`;
                 if (countdownTime <= 0) {
                     clearInterval(countdownInterval);
-                    continueButton.style.display = 'block'; // Show the "Continue" button
+                    submitButton.style.display = 'block'; // Show the "Submit" button
                 }
             }, 1000);
         }
@@ -120,9 +123,9 @@
             if (!verificationChecked || verificationChecked[2] !== 'checked') {
                 showPopup();
                 document.getElementById('verify-button').addEventListener('click', startCountdown);
-                document.getElementById('continue-button').addEventListener('click', function () {
+                document.getElementById('submit-button').addEventListener('click', function () {
                     hidePopup();
-                    setCookie('verificationchecked', 'checked', 730); // Set the verificationchecked cookie to "checked" for 2 year
+                    setCookie('verificationchecked', 'checked', 730); // Set the verificationchecked cookie to "checked" for 2 years
                 });
             }
         });
