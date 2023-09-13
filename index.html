@@ -43,6 +43,20 @@
             right: 10px;
             cursor: pointer;
         }
+
+        /* Styles for the notification */
+        .notification {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10000;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -60,78 +74,73 @@
         </div>
     </div>
 
-    <!-- Popup container -->
-    <div class="popup" id="popup">
-        <div class="popup-content">
-            <span class="close-button" id="close-popup">&times;</span>
-            <h2>Notification</h2>
-            <p>It seems like you haven't verified your key. Please verify for full access.</p>
-            <button id="verify-button">Verify In Forms</button>
-            <button id="continue-button" style="display: none;">Continue</button>
-        </div>
+<!-- Popup container -->
+<div class="popup" id="popup">
+    <div class="popup-content">
+        <span class="close-button" id="close-popup">&times;</span>
+        <h2>Notification</h2>
+        <p>It seems like you haven't verified your key. Please verify for full access.</p>
+        <a id="verify-button" href="https://forms.gle/BVTCYEoJ5hnJ78kw7" target="_blank">Verify In Forms</a>
+        <button id="continue-button" style="display: none;">Continue</button>
     </div>
+</div>
 
-    <script>
-        // Function to set a cookie
-        function setCookie(name, value, days) {
-            const expires = new Date();
-            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
-            document.cookie = name + '=' + value + ';expires=' + expires.toUTCString();
-        }
+<script>
+    // Function to set a cookie
+    function setCookie(name, value, days) {
+        const expires = new Date();
+        expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+        document.cookie = name + '=' + value + ';expires=' + expires.toUTCString();
+    }
 
-        // Function to show the popup
-        function showPopup() {
-            const popup = document.getElementById('popup');
-            popup.style.display = 'block';
-            setTimeout(() => {
-                // Fade in the popup
-                const popupContent = document.querySelector('.popup-content');
-                popupContent.style.opacity = 1;
-            }, 100);
-        }
+    // Function to show the "Continue" button with a delay
+    function showContinueButton() {
+        const continueButton = document.getElementById('continue-button');
+        continueButton.style.display = 'block';
+    }
 
-        // Function to hide the popup
-        function hidePopup() {
-            const popup = document.getElementById('popup');
-            popup.style.display = 'none';
-        }
+    // Function to handle the "Verify In Forms" link click
+    function handleVerifyClick() {
+        // Open the Google Form link in a new tab or window
+        window.open('https://forms.gle/BVTCYEoJ5hnJ78kw7', '_blank');
 
-        // Function to start countdown
-        function startCountdown() {
-            const verifyButton = document.getElementById('verify-button');
-            const continueButton = document.getElementById('continue-button');
+        // Show the "Continue" button after a 5-second delay
+        setTimeout(showContinueButton, 5000);
+    }
 
-            verifyButton.style.display = 'none'; // Hide the "Verify In Forms" button
-            continueButton.style.display = 'none'; // Hide the "Continue" button
-            const countdownTime = 20; // 20 seconds countdown
-            const countdownInterval = setInterval(() => {
-                countdownTime--;
-                if (countdownTime <= 0) {
-                    clearInterval(countdownInterval);
-                    continueButton.style.display = 'block'; // Show the "Continue" button
-                }
-            }, 1000);
-        }
+    // Add click event listeners
+    const verifyButton = document.getElementById('verify-button');
+    const continueButton = document.getElementById('continue-button');
+    
+    verifyButton.addEventListener('click', handleVerifyClick);
+    
+    continueButton.addEventListener('click', function () {
+        // Set the verificationchecked cookie to "checked" when "Continue" is clicked
+        setCookie('verificationchecked', 'checked', 365);
+        
+        // Hide the popup
+        const popup = document.getElementById('popup');
+        popup.style.display = 'none';
+        
+        // Show a notification
+        const notification = document.createElement('div');
+        notification.textContent = "You've been verified and have gained full access to the site.";
+        notification.style.backgroundColor = 'green';
+        notification.style.color = 'white';
+        notification.style.position = 'fixed';
+        notification.style.top = '0';
+        notification.style.left = '0';
+        notification.style.width = '100%';
+        notification.style.textAlign = 'center';
+        notification.style.padding = '10px';
+        notification.style.zIndex = '9999';
+        document.body.appendChild(notification);
 
-        // Show the popup if verificationchecked cookie is not "checked"
-        window.addEventListener('load', function () {
-            const verificationChecked = document.cookie.match('(^|;)\\s*verificationchecked\\s*=\\s*([^;]+)');
-            if (!verificationChecked || verificationChecked[2] !== 'checked') {
-                showPopup();
-                document.getElementById('verify-button').addEventListener('click', startCountdown);
-                document.getElementById('continue-button').addEventListener('click', function () {
-                    hidePopup();
-                    setCookie('verificationchecked', 'checked', 365); // Set the verificationchecked cookie to "checked" for 1 year
-                });
-            }
-        });
-
-        // Add click event listener to the "No" button
-        const noButton = document.querySelector('.no');
-        noButton.addEventListener('click', function () {
-            // Hide the popup when "No" is clicked
-            hidePopup();
-        });
-    </script>
+        // Automatically remove the notification after 3 seconds
+        setTimeout(function () {
+            document.body.removeChild(notification);
+        }, 3000);
+    });
+</script>
 </body>
 </html>
