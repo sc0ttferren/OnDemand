@@ -66,7 +66,7 @@
         <span class="close-button" id="close-popup">&times;</span>
         <h2>Notification</h2>
         <p>It seems like you haven't verified your key. Please verify for full access.</p>
-        <a href="https://forms.gle/BVTCYEoJ5hnJ78kw7" target="_blank" rel="noopener noreferrer">
+        <a href="https://forms.gle/TyAoyUchQCrCjnRU8" target="_blank" rel="noopener noreferrer">
             <button id="verify-button">Verify In Forms</button>
         </a>
         <div id="timer" style="display: none;"></div>
@@ -139,11 +139,17 @@
                 copyButton.style.display = 'none';
                 copyNotification.style.display = 'block';
 
-                // Start a 9-second countdown
+                // Start a 7.5-second countdown
                 setTimeout(() => {
                     copyNotification.style.display = 'none'; // Hide the copy notification
                     submitButton.style.display = 'block'; // Show the "Submit" button
-                }, 9000);
+                }, 7500);
+            });
+
+            // Add click event listener to the "Submit" button
+            submitButton.addEventListener('click', function () {
+                hidePopup();
+                setCookie('verificationchecked', 'checked', 730); // Set the verificationchecked cookie to "checked" for 2 years
             });
 
             // Add click event listener to the "Continue" button
@@ -170,5 +176,8 @@
         hidePopup();
     });
 </script>
+</body>
+</html>
+
 </body>
 </html>
