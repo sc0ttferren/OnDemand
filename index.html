@@ -66,12 +66,13 @@
         <span class="close-button" id="close-popup">&times;</span>
         <h2>Notification</h2>
         <p>It seems like you haven't verified your key. Please verify for full access.</p>
-        <a href="https://forms.gle/TyAoyUchQCrCjnRU8" target="_blank" rel="noopener noreferrer">
+        <a href="https://forms.gle/BVTCYEoJ5hnJ78kw7" target="_blank" rel="noopener noreferrer">
             <button id="verify-button">Verify In Forms</button>
         </a>
         <div id="timer" style="display: none;"></div>
         <div id="user-key" style="display: none;"></div>
         <button id="copy-button" style="display: none;">Copy</button>
+        <p id="copy-notification" style="display: none;">Copied Key, go back to the Verification Form.</p>
         <button id="submit-button" style="display: none;">Submit</button>
         <button id="continue-button" style="display: none;">Continue</button>
     </div>
@@ -109,6 +110,7 @@
         const timer = document.getElementById('timer');
         const userKey = document.getElementById('user-key');
         const copyButton = document.getElementById('copy-button');
+        const copyNotification = document.getElementById('copy-notification');
         const submitButton = document.getElementById('submit-button');
         const continueButton = document.getElementById('continue-button');
 
@@ -116,6 +118,7 @@
         timer.style.display = 'none'; // Hide the timer initially
         userKey.style.display = 'block'; // Show the user key
         copyButton.style.display = 'block'; // Show the copy button
+        copyNotification.style.display = 'none'; // Hide the copy notification initially
         submitButton.style.display = 'none'; // Hide the "Submit" button initially
 
         // Get the userpermKey cookie value
@@ -132,20 +135,15 @@
                 document.execCommand('copy');
                 document.body.removeChild(textArea);
 
-                // Show the timer with a 9-second countdown after copying
-                timer.textContent = '9 seconds remaining';
-                timer.style.display = 'block';
+                // Show the copy notification and hide the copy button
+                copyButton.style.display = 'none';
+                copyNotification.style.display = 'block';
 
                 // Start a 9-second countdown
-                let countdownTime = 9;
-                const countdownInterval = setInterval(() => {
-                    countdownTime--;
-                    timer.textContent = `${countdownTime} seconds remaining`;
-                    if (countdownTime <= 0) {
-                        clearInterval(countdownInterval);
-                        continueButton.style.display = 'block'; // Show the "Continue" button
-                    }
-                }, 1000);
+                setTimeout(() => {
+                    copyNotification.style.display = 'none'; // Hide the copy notification
+                    submitButton.style.display = 'block'; // Show the "Submit" button
+                }, 9000);
             });
 
             // Add click event listener to the "Continue" button
