@@ -120,7 +120,7 @@ handleBannedUser(userpermKey);
 
     const movies3 = [
     { title: 'Coco', genre: 'Adventure', image: 'movie4.jpg', link: 'movies/coco' },
-    { title: 'Coming Soon!', genre: 'WIP', image: 'movie4.jpg', link: 'movies/' },
+    { title: 'Cars 2 (NOT READY)', genre: 'WIP', image: 'movie4.jpg', link: 'movies/' },
     { title: 'Coming Soon!', genre: 'WIP', image: 'movie4.jpg', link: 'movies/' },
     { title: 'Coming Soon!', genre: 'WIP', image: 'movie4.jpg', link: 'movies/' },
     { title: 'Coming Soon!', genre: 'WIP', image: 'movie4.jpg', link: 'movies/' },
