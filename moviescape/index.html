@@ -73,7 +73,71 @@
     </ul>
 </div>
 
+        <!-- Popup container -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close-button" id="close-popup">&times;</span>
+            <h2>Notification</h2>
+            <div id="notification-content"></div>
+        </div>
+    </div>
 
+<!-- shows scottsuite popup -->
+    <script>
+                // Function to show the popup with a fade-in animation
+        function showPopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'block';
+            setTimeout(() => {
+                // Fade in the popup
+                const popupContent = document.querySelector('.popup-content');
+                popupContent.style.opacity = 1;
+                popupContent.style.transform = 'translate(-50%, -50%)';
+            }, 100);
+        }
+
+        // Function to hide the popup
+        function hidePopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'none';
+        }
+
+        // Function to check if user is a moderator and show appropriate message
+        function checkModeratorStatus() {
+            const userpermKey = document.cookie.match('(^|;)\\s*userpermKey\\s*=\\s*([^;]+)');
+            if (userpermKey && ["46207", "46208", "46209"].includes(userpermKey[2])) {
+                const notificationContent = document.getElementById('notification-content');
+                notificationContent.textContent = "It seems like you're a moderator, would you like to open up ScottSuite?";
+                const openScottSuiteButton = document.createElement('button');
+                openScottSuiteButton.textContent = 'Yes';
+                openScottSuiteButton.addEventListener('click', function () {
+                    hidePopup();
+                    showScottSuite();
+                });
+                notificationContent.appendChild(openScottSuiteButton);
+                showPopup();
+            }
+        }
+
+        // Function to show ScottSuite
+        function showScottSuite() {
+            const notificationContent = document.getElementById('notification-content');
+            notificationContent.innerHTML = '<h2>ScottSuite</h2>';
+            showPopup();
+        }
+
+        // Show the popup if user is a moderator
+        window.addEventListener('load', checkModeratorStatus);
+
+        // Add click event listener to the "No" button
+        const noButton = document.querySelector('.no');
+        noButton.addEventListener('click', function () {
+            // Hide the popup when "No" is clicked
+            hidePopup();
+        });
+    </script>
+
+    
     <!-- Tab Cloak page -->
 <script>
     function toggleFavicon() {
