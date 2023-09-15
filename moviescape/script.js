@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', function () { // load now
+
 // Function to check if a cookie with the given name exists
 function getCookie(name) {
     const cookies = document.cookie.split(';');
