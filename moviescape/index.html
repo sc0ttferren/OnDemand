@@ -10,63 +10,40 @@
 <body>
     <header>
         <h1>MovieScape</h1>
-        <div id="settings-icon" class="settings-icon">
+        <div class="settings-icon"> <!-- Removed "id" attribute -->
             <a href="#" id="settings-link"><img src="https://github.com/sc0ttferren/scottstheatres/raw/main/moviescape/Settings-L-icon.png" alt="Settings"></a>
         </div>
     </header>
     <main>
-        <style>
-            /* CSS for movie card */
-            .movie-card {
-                display: inline-block;
-                margin: 10px;
-                text-align: center;
-                width: 200px; /* Adjust the width as needed */
-            }
-
-            /* CSS for movie list container */
-            .movie-list-container {
-                white-space: nowrap; /* Prevent movie lists from wrapping to the next line */
-                overflow-x: auto; /* Add horizontal scrollbar if needed */
-            }
-
-            /* Style for the movie list headings */
-            .movie-list-heading {
-                text-align: center;
-                font-size: 20px;
-            }
-        </style>
-    </head>
-    <body>
-        <main>
-            <div class="movie-list-container">
-                <h2 class="movie-list-heading">Movie List 1</h2>
-                <section id="movie-list">
-                    <!-- 1st Movie Cards List Dynamic Auto-Add -->
-                </section>
-            </div>
-            <div class="movie-list-container">
-                <h2 class="movie-list-heading">Movie List 2</h2>
-                <section id="movie-list-2">
-                    <!-- 2nd Movie Cards List Dynamic Auto-Add -->
-                </section>
-            </div>
-            <div class="movie-list-container">
-                <h2 class="movie-list-heading">Movie List 3</h2>
-                <section id="movie-list-3">
-                    <!-- 3rd Movie Cards List Dynamic Auto-Add -->
-                </section>
-            </div>
-        </main>
-
-        <!-- ScottSuite Popup -->
-        <div class="popup" id="popupSS">
-            <div class="popup-content">
-                <span class="close-button" id="close-popupSS">&times;</span>
-                <div id="scott-suite-content"></div>
-            </div>
+        <!-- Removed inline CSS; you should put it in an external stylesheet (style.css) -->
+        <div class="movie-list-container">
+            <h2 class="movie-list-heading">Movie List 1</h2>
+            <section id="movie-list">
+                <!-- 1st Movie Cards List Dynamic Auto-Add -->
+            </section>
         </div>
-    </body>
+        <div class="movie-list-container">
+            <h2 class="movie-list-heading">Movie List 2</h2>
+            <section id="movie-list-2">
+                <!-- 2nd Movie Cards List Dynamic Auto-Add -->
+            </section>
+        </div>
+        <div class="movie-list-container">
+            <h2 class="movie-list-heading">Movie List 3</h2>
+            <section id="movie-list-3">
+                <!-- 3rd Movie Cards List Dynamic Auto-Add -->
+            </section>
+        </div>
+    </main>
+
+    <!-- ScottSuite Popup -->
+    <div class="popup" id="popupSS">
+        <div class="popup-content">
+            <span class="close-button" id="close-popupSS">&times;</span>
+            <div id="scott-suite-content"></div>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2023-24 Scott's Theatres</p>
     </footer>
