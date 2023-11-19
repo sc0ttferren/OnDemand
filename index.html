@@ -9,41 +9,6 @@
     <title>Scott's Theatres - Choosing</title>
     
     <style>
-        /* Styles for the popup */
-        .popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 9999; /* Ensure the popup is on top of everything */
-        }
-        
-        .popup-content {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            width: 80%;
-            max-width: 400px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            opacity: 0; /* Start with opacity set to 0 */
-            transition: opacity 0.3s ease, transform 0.3s ease; /* Add a transition effect for opacity and transform */
-        }
-        
-        /* Styles for the close button */
-        .close-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-        }
-        
         /* Remove button outlines */
         .channel-button {
             outline: none;
@@ -54,7 +19,6 @@
     <div class="choose-container">
         <h1 class="header">Choose A Category</h1>
         <div class="button-container">
-            <!-- Update the buttons to remove outlines and add redirection -->
             <a href="/moviescape/">
                 <button id="moviescape-button" class="channel-button">
                     <h2>MovieScape</h2>
@@ -69,122 +33,5 @@
             </a>
         </div>
     </div>
-
-<!-- Popup container -->
-<div class="popup" id="popup">
-    <div class="popup-content">
-        <span class="close-button" id="close-popup">&times;</span>
-        <h2>Notification</h2>
-        <p>It seems like you haven't verified your key. Please verify for full access.</p>
-        <a href="https://forms.gle/TyAoyUchQCrCjnRU8" target="_blank" rel="noopener noreferrer">
-            <button id="verify-button">Verify In Forms</button>
-        </a>
-        <div id="timer" style="display: none;"></div>
-        <div id="user-key" style="display: none;"></div>
-        <button id="copy-button" style="display: none;">Copy</button>
-        <p id="copy-notification" style="display: none;">Copied Key, go back to the Verification Form.</p>
-        <button id="submit-button" style="display: none;">Submit</button>
-        <button id="continue-button" style="display: none;">Continue</button>
-    </div>
-</div>
-
-<script>
-    // Function to set a cookie
-    function setCookie(name, value, days) {
-        const expires = new Date();
-        expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
-        document.cookie = name + '=' + value + ';expires=' + expires.toUTCString();
-    }
-
-    // Function to show the popup with a fade-in animation
-    function showPopup() {
-        const popup = document.getElementById('popup');
-        popup.style.display = 'block';
-        setTimeout(() => {
-            // Fade in the popup
-            const popupContent = document.querySelector('.popup-content');
-            popupContent.style.opacity = 1;
-            popupContent.style.transform = 'translate(-50%, -50%)';
-        }, 100);
-    }
-
-    // Function to hide the popup
-    function hidePopup() {
-        const popup = document.getElementById('popup');
-        popup.style.display = 'none';
-    }
-
-    // Function to start countdown
-    function startCountdown() {
-        const verifyButton = document.getElementById('verify-button');
-        const timer = document.getElementById('timer');
-        const userKey = document.getElementById('user-key');
-        const copyButton = document.getElementById('copy-button');
-        const copyNotification = document.getElementById('copy-notification');
-        const submitButton = document.getElementById('submit-button');
-        const continueButton = document.getElementById('continue-button');
-
-        verifyButton.style.display = 'none'; // Hide the "Verify In Forms" button
-        timer.style.display = 'none'; // Hide the timer initially
-        userKey.style.display = 'block'; // Show the user key
-        copyButton.style.display = 'block'; // Show the copy button
-        copyNotification.style.display = 'none'; // Hide the copy notification initially
-        submitButton.style.display = 'none'; // Hide the "Submit" button initially
-
-        // Get the userpermKey cookie value
-        const userpermKey = document.cookie.match('(^|;)\\s*userpermKey\\s*=\\s*([^;]+)');
-        if (userpermKey) {
-            userKey.textContent = userpermKey[2]; // Display the userpermKey value
-
-            // Add click event listener to the copy button
-            copyButton.addEventListener('click', function () {
-                const textArea = document.createElement('textarea');
-                textArea.value = userpermKey[2]; // Set the value to copy
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-
-                // Show the copy notification and hide the copy button
-                copyButton.style.display = 'none';
-                copyNotification.style.display = 'block';
-
-                // Start a 7.5-second countdown
-                setTimeout(() => {
-                    copyNotification.style.display = 'none'; // Hide the copy notification
-                    submitButton.style.display = 'block'; // Show the "Submit" button
-                }, 7500);
-            });
-
-            // Add click event listener to the "Submit" button
-            submitButton.addEventListener('click', function () {
-                hidePopup();
-                setCookie('verificationchecked', 'checked', 730); // Set the verificationchecked cookie to "checked" for 2 years
-            });
-
-            // Add click event listener to the "Continue" button
-            continueButton.addEventListener('click', function () {
-                hidePopup();
-                setCookie('verificationchecked', 'checked', 730); // Set the verificationchecked cookie to "checked" for 2 years
-            });
-        }
-    }
-
-    // Show the popup if verificationchecked cookie is not "checked"
-    window.addEventListener('load', function () {
-        const verificationChecked = document.cookie.match('(^|;)\\s*verificationchecked\\s*=\\s*([^;]+)');
-        if (!verificationChecked || verificationChecked[2] !== 'checked') {
-            showPopup();
-            document.getElementById('verify-button').addEventListener('click', startCountdown);
-        }
-    });
-
-    // Add click event listener to the "No" button
-    const noButton = document.querySelector('.no');
-    noButton.addEventListener('click', function () {
-        // Hide the popup when "No" is clicked
-        hidePopup();
-    });
-</script>
 </body>
 </html>
