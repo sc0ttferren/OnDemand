@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image: url('https://img.freepik.com/free-photo/movie-background-collage_23-2149876003.jpg?w=2000&t=st=1693669950~exp=1693670550~hmac=0c150150becb733580b35fbce3b9f31794de9d97c1f4b1477c53e991b9230f9e');
+    background-image: url('/img/movie-background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
