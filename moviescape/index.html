@@ -67,8 +67,8 @@
 <div id="settings-menu" class="settings-menu">
     <!-- Settings menu content here -->
     <ul>
-        <li id="tab-cloak-option"><a href="#" onclick="toggleFavicon()">Tab Cloak</a></li>
-        <li><a href="#" onclick="openAboutBlankTab()">About:Blank Tab</a></li>
+        <li id="tab-cloak-option"><a onclick="toggleFavicon()">Tab Cloak</a></li>
+        <li><a onclick="openAboutBlankTab()">About:Blank Tab</a></li>
         <li id="user-key">Loading..</li> <!-- Updated with an ID -->
         <!-- Add more options as needed -->
     </ul>
@@ -87,7 +87,7 @@
         } else {
             // changes back to the original favicon & title
             currentFavicon.href = "https://github-production-user-asset-6210df.s3.amazonaws.com/100329425/265307460-71bee8b1-cbb4-4da7-9378-21730d6f6fc6.png";
-            document.title = "MovieScape - Library";
+            document.title = "MovieScape | OnDemand";
         }
     }
 </script>
@@ -95,16 +95,26 @@
 <!-- About:Blank page -->
 <script>
     function openAboutBlankTab() {
-        // Create a new window or tab with about:blank
+        
         const newTab = window.open('about:blank', '_blank');
 
-        // Check if the new window/tab was successfully opened
         if (newTab) {
-            // Copy the content of the original page into the new window/tab
-            newTab.document.write(document.documentElement.outerHTML);
+            // Clone the document element
+            const clonedContent = document.documentElement.cloneNode(true);
+
+            // remove the script tag from the cloned content
+            const scriptTags = clonedContent.querySelectorAll('script');
+            scriptTags.forEach(script => {
+                if (script === document.currentScript) {
+                    script.remove(); // remove the current executing script
+                }
+            });
+
+            
+            newTab.document.write(clonedContent.outerHTML);
             newTab.document.close();
         } else {
-            // Handle the case where the new window/tab couldn't be opened
+            // ALLOW THEM POPUPS
             alert('Pop-up blocked. Please allow pop-ups for this site.');
         }
     }
@@ -112,7 +122,7 @@
 
     </div>
     <footer>
-        <p>&copy; 2023-24 Scott's Theatres</p>
+        <p>&copy; 2023-24 OnDemand | All Rights Reserved.</p>
     </footer>
 
     <script src="script.js"></script>
